@@ -1,0 +1,30 @@
+import StyledPinButton from "./StyledPinButton";
+import StyledButton from "./StyledButton";
+
+function Button(props) {
+  return props.kind === "default" ||
+    props.kind === "back" ||
+    props.kind === "sort" ? (
+    <StyledButton
+      onClick={props.onClick}
+      type={props.type}
+      paint={props.paint}
+      kind={props.kind}
+    >
+      {props.children}
+    </StyledButton>
+  ) : (
+    <StyledPinButton
+      direction={props.direction}
+      onClick={props.onClick}
+      kind={props.kind}
+      upvoted={props.upvoted}
+      filter={props.filter}
+      selected={props.selected}
+    >
+      {props.children}
+    </StyledPinButton>
+  );
+}
+
+export default Button;
