@@ -5,6 +5,7 @@ import Arrow from "./UI/Arrow";
 import Button from "./UI/Button";
 import LightBulbIcon from "./UI/LightBulbIcon";
 import SelectBox from "./UI/SelectBox";
+import classes from "./TopBar.module.css";
 
 const sortOptions = [
   { label: "Most upvotes" },
@@ -48,23 +49,16 @@ const TopBar = ({ suggestions, handler }) => {
   };
 
   return (
-    <Container
-      jc="space-between"
-      ai="center"
-      bg="#373f68"
-      pddn="14px 16px 14px 24px"
-      br="10px"
-      w="100%"
-    >
-      <Container gap="38px">
-        <Container gap="16px" ai="center">
+    <Container className={classes.level_0}>
+      <Container className={classes.level_1}>
+        <Container className={classes.level_2}>
           <LightBulbIcon />
           <TotalSuggestions>{suggestions.length} Suggestions</TotalSuggestions>
         </Container>
         <SelectBox
           options={sortOptions}
           sortButton
-          top="66px"
+          top="50px"
           w="255px"
           handleOption={handleSetSort}
         >

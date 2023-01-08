@@ -3,6 +3,7 @@ import BubbleIcon from "./UI/BubbleIcon";
 import Button from "./UI/Button";
 import { Content, Title, Details, Num } from "./SuggestionCardStyles";
 import Container from "./Container";
+import classes from "./SuggestionCard.module.css";
 
 const SuggestionCard = ({ suggestion, handler }) => {
   const handleQuantity = () => {
@@ -27,14 +28,8 @@ const SuggestionCard = ({ suggestion, handler }) => {
   };
 
   return (
-    <Container
-      bg="#ffffff"
-      jc="space-between"
-      pddn="28px 32px"
-      br="10px"
-      w="100%"
-    >
-      <Container gap="40px" ai="start" minW="0px">
+    <Container className={classes.level_0}>
+      <Container className={classes.level_1}>
         <Button
           onClick={handleUpvote}
           upvoted={suggestion.upvotedByMe}
@@ -49,7 +44,7 @@ const SuggestionCard = ({ suggestion, handler }) => {
           <Button kind="tag">{suggestion.tag}</Button>
         </Content>
       </Container>
-      <Container ai="center" w="auto" gap="8px">
+      <Container className={classes.level_2}>
         <BubbleIcon />
         <Num>{suggestion.comments.quantity}</Num>
       </Container>

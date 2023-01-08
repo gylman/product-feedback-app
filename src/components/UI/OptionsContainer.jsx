@@ -5,9 +5,9 @@ import Option from "./Option";
 
 const StyledContainer = styled.ul`
   background: #ffffff;
+  width: ${(props) => (props.w ? props.w : "100%")};
   border-radius: ${(props) => props.theme["border-radius"]};
   box-shadow: 0px 10px 40px -7px rgba(55, 63, 104, 0.350492);
-  width: 100%;
   margin-top: 16px;
   list-style: none;
   z-index: 9;
@@ -17,7 +17,7 @@ const StyledContainer = styled.ul`
 `;
 
 const OptionsContainer = (props) => (
-  <StyledContainer top={props.top}>
+  <StyledContainer top={props.top} w={props.w}>
     {props.options.map((option, index) => (
       <div key={cuid()}>
         <Option

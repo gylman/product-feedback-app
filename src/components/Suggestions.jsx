@@ -3,10 +3,11 @@ import React from "react";
 import Container from "./Container";
 import SuggestionCard from "./SuggestionCard";
 import StyledLink from "./UI/StyledLink";
+import classes from "./Suggestions.module.css";
 
 const Suggestions = ({ suggestions, handler }) => {
   return (
-    <Container ai="center" fd="column" gap="20px" w="100%">
+    <Container className={classes.level_0}>
       {suggestions.map((suggestion) => (
         <StyledLink key={cuid()} to={`/suggestions/${suggestion.id}`}>
           <SuggestionCard suggestion={suggestion} handler={handler} />

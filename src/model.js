@@ -3,6 +3,11 @@ import user_0 from "./assets/images/user_0.svg";
 import user_1 from "./assets/images/user_1.svg";
 import user_3 from "./assets/images/user_3.svg";
 
+export const devices = {
+  mobile: `(min-width: ${"412px"})`,
+  tablet: `(min-width: ${"1160px"})`,
+};
+
 export const suggestionList = [
   {
     id: "0",

@@ -12,6 +12,7 @@ import SelectBox from "./UI/SelectBox";
 import Container from "./Container";
 import { useNavigate } from "react-router";
 import cuid from "cuid";
+import classes from "./CreateEditFeedback.module.css";
 
 const Wrapper = styled.form`
   max-width: 540px;
@@ -140,8 +141,8 @@ const CreateEditFeedback = ({ modalType, suggestions, handler }) => {
   }
 
   return (
-    <Container width="100%" jc="center">
-      <Container fd="column" gap="68px">
+    <Container className={classes.level_0}>
+      <Container className={classes.level_1}>
         <Container>
           <Button
             kind="back"
@@ -159,7 +160,7 @@ const CreateEditFeedback = ({ modalType, suggestions, handler }) => {
             <img src={icon} alt={`${icon}`}></img>
           </Icon>
           <ModalTitle>{modalTitle}</ModalTitle>
-          <Container fd="column" gap="24px" mb="32px">
+          <Container className={classes.level_2}>
             <InputRow
               title="Feedback Title"
               description="Add a short, descriptive headline"
@@ -213,7 +214,7 @@ const CreateEditFeedback = ({ modalType, suggestions, handler }) => {
               </TextareaWrapper>
             </InputRow>
           </Container>
-          <Container jc="flex-end" gap="16px">
+          <Container className={classes.level_3}>
             {modalType === "edit" && (
               <ButtonWrapper>
                 <Button

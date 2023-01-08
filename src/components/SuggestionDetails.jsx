@@ -7,6 +7,7 @@ import { useParams } from "react-router-dom";
 import Arrow from "./UI/Arrow";
 import Button from "./UI/Button";
 import StyledLink from "./UI/StyledLink";
+import classes from "./SuggestionDetails.module.css";
 const SuggestionDetails = (props) => {
   let params = useParams();
 
@@ -15,9 +16,9 @@ const SuggestionDetails = (props) => {
   );
 
   return (
-    <Container w="100%" jc="center">
-      <Container fd="column" gap="24px" maxW="730px" w="100%">
-        <Container jc="space-between" ai="center" w="100%">
+    <Container className={classes.level_0}>
+      <Container className={classes.level_1}>
+        <Container className={classes.level_2}>
           <Container>
             <StyledLink to={`/`}>
               <Button kind="back" paint="transparent">

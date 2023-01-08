@@ -7,6 +7,7 @@ import {
   Quantity,
 } from "./RoadmapMiniStyles";
 import StyledLink from "./UI/StyledLink";
+import classes from "./RoadmapMini.module.css";
 
 const RoadmapMini = ({ suggestions }) => {
   const statusesAmount = [
@@ -16,25 +17,25 @@ const RoadmapMini = ({ suggestions }) => {
     suggestions.filter((suggestion) => suggestion.status === "Live").length,
   ];
   return (
-    <Container fd="column" gap="24px" bg="#ffffff" pddn="19px 24px" br="10px">
-      <Container ai="center" jc="space-between">
+    <Container className={classes.level_0}>
+      <Container className={classes.level_1}>
         <Header>Roadmap</Header>
         <Span number={suggestions.length}>
           <StyledLink to="/roadmap">View</StyledLink>
         </Span>
       </Container>
-      <Container fd="column" gap="8px">
-        <Container jc="start" ai="center" gap="16px">
+      <Container className={classes.level_2}>
+        <Container className={classes.level_3}>
           <Dot color="#f49f85" />
           <Status>Planned</Status>
           <Quantity>{statusesAmount[0]}</Quantity>
         </Container>
-        <Container jc="start" ai="center" gap="16px">
+        <Container className={classes.level_3}>
           <Dot color="#ad1fea" />
           <Status>In-Progress</Status>
           <Quantity>{statusesAmount[1]}</Quantity>
         </Container>
-        <Container jc="start" ai="center" gap="16px">
+        <Container className={classes.level_3}>
           <Dot color="#62bcfa" />
           <Status>Live</Status>
           <Quantity>{statusesAmount[2]}</Quantity>

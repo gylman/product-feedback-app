@@ -3,7 +3,8 @@ import Container from "../components/Container";
 import NoFeedBackScreen from "../components/NoFeedbackScreen";
 import Suggestions from "../components/Suggestions";
 import TopBar from "../components/TopBar";
-import LeftBar from "../LeftBar";
+import LeftBar from "../components/LeftBar";
+import classes from "./IndexScreen.module.css";
 
 const IndexScreen = (props) => {
   const [suggestionIDs, setSuggestionsIDs] = useState(
@@ -14,12 +15,12 @@ const IndexScreen = (props) => {
   };
 
   return (
-    <Container gap="30px" ai="start">
+    <Container className={classes.level_0}>
       <LeftBar
         handler={handleSetSuggestionsIDs}
         suggestions={props.suggestions}
       />
-      <Container gap="24px" fd="column" w="100%" minW="0px">
+      <Container className={classes.level_1}>
         <TopBar
           suggestions={suggestionIDs.map((id) =>
             props.suggestions.find((suggestion) => suggestion.id === id)

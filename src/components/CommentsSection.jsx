@@ -8,7 +8,7 @@ import {
 import horizontal_line from "../assets/images/horizontal_line.svg";
 import Comment from "./Comment.jsx";
 import Container from "./Container";
-
+import classes from "./CommentsSection.module.css";
 import { currentBrowser } from "../model";
 
 const CommentsSection = ({ suggestion, handler }) => {
@@ -49,12 +49,12 @@ const CommentsSection = ({ suggestion, handler }) => {
   return (
     <CommentsWrapper>
       <CommentQuantity>{suggestion.comments.quantity} Comments</CommentQuantity>
-      <Container fd="column" gap="32px">
+      <Container className={classes.level_0}>
         {suggestion.comments.commentList.map((comment, i) => {
           return comment.children.length ? (
-            <Container fd="column" gap="32px" pos="relative" key={cuid()}>
+            <Container className={classes.level_1} key={cuid()}>
               <Comment comment={comment} handler={handleComments} />
-              <Container fd="column" gap="32px" ml="45px">
+              <Container className={classes.level_2}>
                 {comment.children.map((child) => (
                   <Comment
                     key={cuid()}
@@ -69,7 +69,7 @@ const CommentsSection = ({ suggestion, handler }) => {
               )}
             </Container>
           ) : (
-            <Container fd="column" gap="32px" pos="relative" key={cuid()}>
+            <Container className={classes.level_3} key={cuid()}>
               <Comment comment={comment} handler={handleComments} />
               {i < suggestion.comments.commentList.length - 1 && (
                 <img src={horizontal_line} alt="horizontal_line" />

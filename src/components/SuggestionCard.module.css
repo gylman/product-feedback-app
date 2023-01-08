@@ -1,0 +1,19 @@
+.level_0 {
+  background-color: #ffffff;
+  justify-content: space-between;
+  padding: 28px 32px;
+  border-radius: 10px;
+  width: 100%;
+}
+
+.level_1 {
+  gap: 40px;
+  align-items: start;
+  min-width: 0px;
+}
+
+.level_2 {
+  align-items: center;
+  width: auto;
+  gap: 8px;
+}

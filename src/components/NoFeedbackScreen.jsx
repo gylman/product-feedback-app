@@ -3,6 +3,7 @@ import styled from "styled-components";
 import Container from "./Container";
 import Button from "./UI/Button";
 import ImageNoFeedback from "./UI/ImageNoFeedback";
+import classes from "./NoFeedbackScreen.module.css";
 
 const Title = styled.h1`
   color: #3a4374;
@@ -23,14 +24,7 @@ const Details = styled.div`
 const NoFeedBackScreen = (props) => {
   const navigate = useNavigate();
   return (
-    <Container
-      jc="center"
-      ai="center"
-      fd="column"
-      bg="#ffffff"
-      br="10px"
-      minH="600px"
-    >
+    <Container className={classes.level_0}>
       <ImageNoFeedback />
       <Title>There is no feedback yet.</Title>
       <Details>

@@ -4,6 +4,7 @@ import StyledInput from "./UI/StyledInput";
 import Button from "./UI/Button";
 import Container from "./Container";
 import { currentBrowser } from "../model";
+import classes from "./AddComment.module.css";
 
 const TopMostContainer = styled.div`
   padding: 24px 32px 32px 34px;
@@ -80,13 +81,7 @@ const AddComment = ({ suggestion, handler }) => {
     <form onSubmit={handleSubmit}>
       <TopMostContainer>
         <Header>Add Comment</Header>
-        <Container
-          mt="8px"
-          gap="16px"
-          minH="80px"
-          ai="start"
-          jc="space-between"
-        >
+        <Container className={classes.level_0}>
           <StyledInput
             maxLength={250}
             ref={inputData}
@@ -96,7 +91,7 @@ const AddComment = ({ suggestion, handler }) => {
             onKeyDown={handleEnterPress}
           />
         </Container>
-        <Container jc="space-between" mt="16px">
+        <Container className={classes.level_1}>
           <CharLeft>{quantity} characters left</CharLeft>
           <Button type="submit" kind="default" paint="#AD1FEA">
             <p>Post Comment</p>

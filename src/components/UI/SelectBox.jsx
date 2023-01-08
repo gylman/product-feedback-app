@@ -7,7 +7,6 @@ import { useEffect } from "react";
 
 const SelectBoxContainer = styled.div`
   position: relative;
-  width: ${(props) => props.w && props.w};
 `;
 
 const StyledSelectBox = styled(StyledInput)`
@@ -44,7 +43,7 @@ const SelectBox = (props) => {
   }, [option]);
 
   return (
-    <SelectBoxContainer w={props.w}>
+    <SelectBoxContainer>
       <StyledSelectBox
         as="div"
         onClick={handleSelectBoxClick}
@@ -58,6 +57,7 @@ const SelectBox = (props) => {
       </StyledSelectBox>
       {isShown && (
         <OptionsContainer
+          w={props.w}
           option={option}
           options={props.options}
           setIsShown={setIsShown}

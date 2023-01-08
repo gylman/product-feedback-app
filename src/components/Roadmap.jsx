@@ -6,6 +6,7 @@ import RoadmapCard from "./RoadmapCard";
 import Arrow from "./UI/Arrow";
 import Button from "./UI/Button";
 import StyledLink from "./UI/StyledLink";
+import classes from "./Roadmap.module.css";
 
 const PageTitle = styled.p`
   color: #ffffff;
@@ -15,10 +16,16 @@ const PageTitle = styled.p`
 const Title = styled.p`
   color: #3a4374;
   ${(props) => props.theme.typography.size18}
+  @media (max-width: 1260px) {
+    ${(props) => props.theme.typography.size14}
+  }
 `;
 const Description = styled.p`
   color: #647196;
-  ${(props) => props.theme.typography.size1}
+  ${(props) => props.theme.typography.size16}
+  @media (max-width: 1260px) {
+    ${(props) => props.theme.typography.size14semi}
+  }
 `;
 
 const ButtonTitle = styled.span`
@@ -52,16 +59,9 @@ const Roadmap = ({ suggestions, handler }) => {
         ));
   });
   return (
-    <Container gap="48px" fd="column" ai="center">
-      <Container
-        ai="center"
-        jc="space-between"
-        bg="#373F68"
-        pddn="27px 40px 27px 32px"
-        br="10px"
-        w="100%"
-      >
-        <Container fd="column">
+    <Container className={classes.level_0}>
+      <Container className={classes.level_1}>
+        <Container className={classes.level_2}>
           <StyledLink to="/">
             <Button kind="back" paint="transparent">
               <Arrow direction="left" paint="#4661E6" />
@@ -78,23 +78,23 @@ const Roadmap = ({ suggestions, handler }) => {
           </StyledLink>
         </Container>
       </Container>
-      <Container gap="30px">
-        <Container fd="column" gap="24px">
-          <Container fd="column" gap="8px" mb="8px">
+      <Container className={classes.level_3}>
+        <Container className={classes.level_4}>
+          <Container className={classes.level_5}>
             <Title>Planned ({grid[0].length})</Title>
             <Description>Ideas prioritized for research</Description>
           </Container>
           {grid[0]}
         </Container>
-        <Container fd="column" gap="24px">
-          <Container fd="column" gap="8px" mb="8px">
+        <Container className={classes.level_4}>
+          <Container className={classes.level_5}>
             <Title>In-Progress ({grid[1].length})</Title>
             <Description>Currently being developed</Description>
           </Container>
           {grid[1]}
         </Container>
-        <Container fd="column" gap="24px">
-          <Container fd="column" gap="8px" mb="8px">
+        <Container className={classes.level_4}>
+          <Container className={classes.level_5}>
             <Title>Live ({grid[2].length})</Title>
             <Description>Released features</Description>
           </Container>

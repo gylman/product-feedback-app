@@ -9,6 +9,7 @@ import {
 import Container from "./Container.jsx";
 import Button from "./UI/Button";
 import StyledInput from "./UI/StyledInput";
+import classes from "./Comment.module.css";
 
 const Comment = ({ comment, handler }) => {
   const [isReplying, setIsReplying] = useState(false);
@@ -42,13 +43,13 @@ const Comment = ({ comment, handler }) => {
   };
 
   return (
-    <Container gap="32px">
+    <Container className={classes.level_0}>
       <AuthorImage>
         <img src={comment.img} alt="profile_pic" />
       </AuthorImage>
-      <Container fd="column" gap="17px" w="100%">
-        <Container ai="center" jc="space-between">
-          <Container fd="column">
+      <Container className={classes.level_1}>
+        <Container className={classes.level_2}>
+          <Container className={classes.level_3}>
             <FullName>{comment.userName}</FullName>
             <Id>{comment.userId}</Id>
           </Container>
@@ -57,13 +58,7 @@ const Comment = ({ comment, handler }) => {
         <CommentContent>{comment.content}</CommentContent>
         {isReplying && (
           <form onSubmit={rawReply ? submitReply : handleIsReplying}>
-            <Container
-              mt="8px"
-              gap="16px"
-              minH="80px"
-              ai="start"
-              jc="space-between"
-            >
+            <Container className={classes.level_4}>
               <StyledInput
                 onChange={handleReply}
                 as="textarea"

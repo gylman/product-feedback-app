@@ -1,0 +1,18 @@
+.level_0 {
+  display: flex;
+  gap: 30px;
+  align-items: start;
+}
+
+.level_1 {
+  gap: 24px;
+  flex-direction: column;
+  width: 100%;
+  min-width: 0px;
+}
+
+@media (max-width: 1160px) {
+  .level_0 {
+    flex-direction: column;
+  }
+}
