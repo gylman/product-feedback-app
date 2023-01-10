@@ -17,9 +17,7 @@ const TopMostContainer = styled.div`
       (props.status === "Live" && "#62bcfa")};
   border-radius: 5px;
   max-width: 350px;
-  min-height: 0;
-  min-width: 0;
-  max-height: 272px;
+  min-height: 272px;
   background-color: #ffffff;
 `;
 
