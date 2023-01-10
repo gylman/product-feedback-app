@@ -7,6 +7,7 @@ import Arrow from "./UI/Arrow";
 import Button from "./UI/Button";
 import StyledLink from "./UI/StyledLink";
 import classes from "./Roadmap.module.css";
+import { useNavigate } from "react-router-dom";
 
 const PageTitle = styled.p`
   color: #ffffff;
@@ -33,49 +34,70 @@ const ButtonTitle = styled.span`
 `;
 
 const Roadmap = ({ suggestions, handler }) => {
+  const navigate = useNavigate();
   const grid = [[], [], []];
   suggestions.forEach((suggestion) => {
     (suggestion.status === "Planned" &&
       grid[0].push(
-        <StyledLink key={cuid()} to={`/suggestions/${suggestion.id}`}>
-          <RoadmapCard key={cuid()} suggestion={suggestion} handler={handler} />
-        </StyledLink>
+        <RoadmapCard
+          navigate={() => {
+            navigate(`/suggestions/${suggestion.id}`);
+          }}
+          key={cuid()}
+          suggestion={suggestion}
+          handler={handler}
+        />
       )) ||
       (suggestion.status === "In-Progress" &&
         grid[1].push(
-          <StyledLink key={cuid()} to={`/suggestions/${suggestion.id}`}>
-            <RoadmapCard
-              key={cuid()}
-              suggestion={suggestion}
-              handler={handler}
-            />
-          </StyledLink>
+          <RoadmapCard
+            navigate={() => {
+              navigate(`/suggestions/${suggestion.id}`);
+            }}
+            key={cuid()}
+            suggestion={suggestion}
+            handler={handler}
+          />
         )) ||
       (suggestion.status === "Live" &&
         grid[2].push(
-          <StyledLink key={cuid()} to={`/suggestions/${suggestion.id}`}>
-            <RoadmapCard suggestion={suggestion} handler={handler} />
-          </StyledLink>
+          <RoadmapCard
+            key={cuid()}
+            navigate={() => {
+              navigate(`/suggestions/${suggestion.id}`);
+            }}
+            suggestion={suggestion}
+            handler={handler}
+          />
         ));
   });
   return (
     <Container className={classes.level_0}>
       <Container className={classes.level_1}>
         <Container className={classes.level_2}>
-          <StyledLink to="/">
-            <Button kind="back" paint="transparent">
-              <Arrow direction="left" paint="#4661E6" />
-              <ButtonTitle>Go back</ButtonTitle>
-            </Button>
-          </StyledLink>
+          <Button
+            onClick={() => {
+              navigate("/");
+            }}
+            kind="back"
+            paint="transparent"
+          >
+            <Arrow direction="left" paint="#4661E6" />
+            <ButtonTitle>Go back</ButtonTitle>
+          </Button>
+
           <PageTitle>Roadmap</PageTitle>
         </Container>
         <Container>
-          <StyledLink to="/create-feedback">
-            <Button kind="default" paint="#AD1FEA">
-              + Add Feedback
-            </Button>
-          </StyledLink>
+          <Button
+            onClick={() => {
+              navigate("/");
+            }}
+            kind="default"
+            paint="#AD1FEA"
+          >
+            + Add Feedback
+          </Button>
         </Container>
       </Container>
       <Container className={classes.level_3}>

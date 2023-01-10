@@ -16,10 +16,12 @@
 }
 .level_3 {
   gap: 30px;
+  min-width: 0;
 }
 .level_4 {
   flex-direction: column;
   gap: 24px;
+  min-width: 0;
 }
 .level_5 {
   flex-direction: column;

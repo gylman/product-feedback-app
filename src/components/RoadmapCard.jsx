@@ -17,6 +17,8 @@ const TopMostContainer = styled.div`
       (props.status === "Live" && "#62bcfa")};
   border-radius: 5px;
   max-width: 350px;
+  min-height: 0;
+  min-width: 0;
   max-height: 272px;
   background-color: #ffffff;
 `;
@@ -40,7 +42,7 @@ const Details = styled.p`
   text-overflow: ellipsis;
 `;
 
-const RoadmapCard = ({ suggestion, handler }) => {
+const RoadmapCard = ({ suggestion, handler, navigate }) => {
   const handleQuantity = () => {
     const quantity = suggestion.upvotedByMe
       ? suggestion.upvotes - 1
@@ -62,7 +64,7 @@ const RoadmapCard = ({ suggestion, handler }) => {
     event.stopPropagation();
   };
   return (
-    <TopMostContainer status={suggestion.status}>
+    <TopMostContainer onClick={navigate} status={suggestion.status}>
       <Container className={classes.level_0}>
         <Dot
           color={
