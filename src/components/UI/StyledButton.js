@@ -7,7 +7,7 @@ const StyledButton = styled.button`
   display: flex;
   white-space: nowrap;
   text-align: center;
-  justify-content: center;
+  justify-content: ${(props) => (props.jc ? props.jc : "center")};
   align-items: center;
   gap: 15px;
   color: ${(props) =>
@@ -25,7 +25,11 @@ const StyledButton = styled.button`
     ${StyledArrow} {
     transform: rotate("180deg"));
   }};
+
 `};
+  @media (max-width: 600px) {
+    font-size: ${({ theme }) => theme.typography.size13bold};
+  }
 `;
 
 export default StyledButton;

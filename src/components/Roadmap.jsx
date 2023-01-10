@@ -81,6 +81,7 @@ const Roadmap = ({ suggestions, handler }) => {
             }}
             kind="back"
             paint="transparent"
+            jc="flex-start"
           >
             <Arrow direction="left" paint="#4661E6" />
             <ButtonTitle>Go back</ButtonTitle>

@@ -20,6 +20,9 @@ const Header = styled.h3`
 const CharLeft = styled.span`
   color: #647196;
   ${(props) => props.theme.typography.size15}
+  @media(max-width: 600px) {
+    ${(props) => props.theme.typography.size13regular}
+  }
 `;
 
 const AddComment = ({ suggestion, handler }) => {

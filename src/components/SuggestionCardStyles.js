@@ -12,6 +12,9 @@ export const Title = styled.h3`
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
+  @media (max-width: 600px) {
+    ${(props) => props.theme.typography.size13bold};
+  }
 `;
 
 export const Details = styled.p`
@@ -22,10 +25,15 @@ export const Details = styled.p`
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
+  @media (max-width: 600px) {
+    ${(props) => props.theme.typography.size13regular};
+  }
 `;
 
 export const Num = styled.p`
   ${(props) => props.theme.typography.size16bold}
-  color: #3A4374
-  ${(props) => props.theme.typography.size13bold}
+  color: #3A4374;
+  @media (max-width: 600px) {
+    ${(props) => props.theme.typography.size13bold};
+  }
 `;

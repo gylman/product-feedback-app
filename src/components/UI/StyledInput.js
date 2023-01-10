@@ -34,6 +34,9 @@ const StyledInput = styled.input`
       css`
         outline: 1px solid #4661e6;
       `)};
+  @media (max-width: 600px) {
+    ${(props) => props.theme.typography.size13regular}
+  }
 `;
 
 export default StyledInput;
