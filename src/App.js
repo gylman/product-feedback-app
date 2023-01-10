@@ -14,7 +14,53 @@ function App() {
     setSuggestions(handler);
   }
 
-  return <Roadmap suggestions={suggestions} handler={handleSetSuggestions} />;
+  return (
+    <Routes>
+      <Route
+        path="/"
+        element={
+          <IndexScreen
+            suggestions={suggestions}
+            handler={handleSetSuggestions}
+          />
+        }
+      />
+      <Route
+        path="/suggestions/:id"
+        element={
+          <SuggestionDetails
+            suggestions={suggestions}
+            handler={handleSetSuggestions}
+          />
+        }
+      />
+      <Route
+        path="/suggestions/:id/edit-feedback"
+        element={
+          <CreateEditFeedback
+            suggestions={suggestions}
+            modalType="edit"
+            handler={handleSetSuggestions}
+          />
+        }
+      />
+      <Route
+        path="/roadmap"
+        element={
+          <Roadmap suggestions={suggestions} handler={handleSetSuggestions} />
+        }
+      />
+      <Route
+        path="/create-feedback"
+        element={
+          <CreateEditFeedback
+            suggestions={suggestions}
+            handler={handleSetSuggestions}
+          />
+        }
+      />
+    </Routes>
+  );
 }
 
 export default App;

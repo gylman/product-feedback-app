@@ -19,6 +19,9 @@ export const Link = styled.span`
 export const Status = styled.p`
   ${(props) => props.theme.typography.size16}
   color: #647196;
+  @media (max-width: 1160px) {
+    ${(props) => props.theme.typography.size13regular}
+  }
 `;
 
 export const Dot = styled.div`

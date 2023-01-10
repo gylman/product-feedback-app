@@ -27,4 +27,5 @@ export const Details = styled.p`
 export const Num = styled.p`
   ${(props) => props.theme.typography.size16bold}
   color: #3A4374
+  ${(props) => props.theme.typography.size13bold}
 `;

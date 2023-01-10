@@ -25,8 +25,18 @@ const theme = {
   },
 
   "typography": {
+    size13bold: {
+      "font-weight": "700",
+      "font-size": "13px",
+      "line-height": "19px",
+    },
     size13: {
       "font-weight": "600",
+      "font-size": "13px",
+      "line-height": "19px",
+    },
+    size13regular: {
+      "font-weight": "400",
       "font-size": "13px",
       "line-height": "19px",
     },

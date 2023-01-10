@@ -30,7 +30,7 @@
   margin-bottom: 8px;
 }
 
-@media (max-width: 1260px) {
+@media (max-width: 800px) {
   .level_3 {
     gap: 10px;
   }

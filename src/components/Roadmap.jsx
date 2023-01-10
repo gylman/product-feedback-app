@@ -17,14 +17,14 @@ const PageTitle = styled.p`
 const Title = styled.p`
   color: #3a4374;
   ${(props) => props.theme.typography.size18}
-  @media (max-width: 1260px) {
+  @media (max-width: 800px) {
     ${(props) => props.theme.typography.size14}
   }
 `;
 const Description = styled.p`
   color: #647196;
   ${(props) => props.theme.typography.size16}
-  @media (max-width: 1260px) {
+  @media (max-width: 800px) {
     ${(props) => props.theme.typography.size14semi}
   }
 `;

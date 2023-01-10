@@ -19,6 +19,10 @@ const TopMostContainer = styled.div`
   max-width: 350px;
   min-height: 272px;
   background-color: #ffffff;
+  @media (max-width: 800px) {
+    max-width: 223px;
+    min-height: 251px;
+  }
 `;
 
 const Title = styled.p`
@@ -29,6 +33,9 @@ const Title = styled.p`
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
+  @media (max-width: 800px) {
+    ${(props) => props.theme.typography.size13bold};
+  }
 `;
 
 const Details = styled.p`
@@ -38,6 +45,9 @@ const Details = styled.p`
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
+  @media (max-width: 800px) {
+    ${(props) => props.theme.typography.size13regular};
+  }
 `;
 
 const RoadmapCard = ({ suggestion, handler, navigate }) => {
