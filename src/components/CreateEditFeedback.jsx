@@ -21,17 +21,27 @@ const Wrapper = styled.form`
   background-color: #ffffff;
   position: relative;
   border-radius: 10px;
+  @media (max-width: 600px) {
+    padding: 44px 24px 24px 24px;
+    max-height: none;
+  }
 `;
 
 const Icon = styled.div`
   position: absolute;
   top: -28px;
   left: 42px;
+  @media (max-width: 600px) {
+    transform: scale(0.715);
+  }
 `;
 
 const ModalTitle = styled.h2`
   color: #3a4374;
   margin-bottom: 40px;
+  @media (max-width: 600px) {
+    ${(props) => props.theme.typography.size18};
+  }
 `;
 
 const TextareaWrapper = styled.div`
@@ -157,7 +167,7 @@ const CreateEditFeedback = ({ modalType, suggestions, handler }) => {
         </Container>
         <Wrapper modalType={modalType}>
           <Icon>
-            <img src={icon} alt={`${icon}`}></img>
+            <img src={icon} alt={`${icon}`} />
           </Icon>
           <ModalTitle>{modalTitle}</ModalTitle>
           <Container className={classes.level_2}>
@@ -218,6 +228,7 @@ const CreateEditFeedback = ({ modalType, suggestions, handler }) => {
             {modalType === "edit" && (
               <ButtonWrapper>
                 <Button
+                  className={classes.level_4}
                   kind="default"
                   type="button"
                   paint="#D73737"
@@ -229,6 +240,7 @@ const CreateEditFeedback = ({ modalType, suggestions, handler }) => {
             )}
             <Container>
               <Button
+                className={classes.level_4}
                 kind="default"
                 type="button"
                 onClick={() => {
@@ -241,12 +253,13 @@ const CreateEditFeedback = ({ modalType, suggestions, handler }) => {
             </Container>
             <Container>
               <Button
+                className={classes.level_4}
                 kind="default"
                 paint="#AD1FEA"
                 type="button"
                 onClick={handleSubmit}
               >
-                Add Feedback
+                {modalType === "edit" ? "Save Changes" : "Add Feedback"}
               </Button>
             </Container>
           </Container>

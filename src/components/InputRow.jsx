@@ -9,11 +9,17 @@ const InputTitle = styled.h4`
   color: #3a4374;
   margin-bottom: 2px;
   ${(props) => props.theme.typography.size14}
+  @media (max-width: 600px) {
+    ${(props) => props.theme.typography.size13bold};
+  }
 `;
 const Description = styled.p`
   color: #647196;
   margin-bottom: 16px;
   ${(props) => props.theme.typography.size14semi}
+  @media (max-width: 600px) {
+    ${(props) => props.theme.typography.size13regular};
+  }
 `;
 
 const InputRow = (props) => (

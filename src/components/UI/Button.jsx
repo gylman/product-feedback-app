@@ -11,6 +11,7 @@ function Button(props) {
       paint={props.paint}
       kind={props.kind}
       jc={props.jc}
+      className={props.className}
     >
       {props.children}
     </StyledButton>

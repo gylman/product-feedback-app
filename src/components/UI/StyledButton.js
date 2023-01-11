@@ -28,7 +28,7 @@ const StyledButton = styled.button`
 
 `};
   @media (max-width: 600px) {
-    font-size: ${({ theme }) => theme.typography.size13bold};
+    ${({ theme }) => theme.typography.size13bold};
   }
 `;
 

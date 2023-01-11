@@ -1,7 +1,6 @@
 import React from "react";
 import styled from "styled-components";
 import BubbleIcon from "./UI/BubbleIcon";
-import { Dot, Status } from "./RoadmapMiniStyles";
 import { Num } from "./SuggestionCardStyles";
 import Button from "./UI/Button";
 import Arrow from "./UI/Arrow";
@@ -48,6 +47,21 @@ const Details = styled.p`
   @media (max-width: 800px) {
     ${(props) => props.theme.typography.size13regular};
   }
+`;
+
+const Status = styled.p`
+  ${(props) => props.theme.typography.size16}
+  color: #647196;
+  @media (max-width: 1160px) {
+    ${(props) => props.theme.typography.size13regular}
+  }
+`;
+
+const Dot = styled.div`
+  border-radius: 50%;
+  width: 8px;
+  height: 8px;
+  background-color: ${(props) => props.color};
 `;
 
 const RoadmapCard = ({ suggestion, handler, navigate }) => {

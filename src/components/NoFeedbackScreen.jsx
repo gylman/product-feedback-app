@@ -9,6 +9,9 @@ const Title = styled.h1`
   color: #3a4374;
   ${(props) => props.theme.typography.size24}
   margin-top: 53.26px;
+  @media (max-width: 600px) {
+    ${(props) => props.theme.typography.size18}
+  }
 `;
 const Details = styled.div`
   color: #647196;
@@ -19,6 +22,9 @@ const Details = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  @media (max-width: 600px) {
+    ${(props) => props.theme.typography.size13regular}
+  }
 `;
 
 const NoFeedBackScreen = (props) => {
