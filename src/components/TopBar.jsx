@@ -51,10 +51,14 @@ const TopBar = ({ suggestions, handler }) => {
   return (
     <Container className={classes.level_0}>
       <Container className={classes.level_1}>
-        <Container className={classes.level_2}>
-          <LightBulbIcon />
-          <TotalSuggestions>{suggestions.length} Suggestions</TotalSuggestions>
-        </Container>
+        {window.innerWidth > 600 && (
+          <Container className={classes.level_2}>
+            <LightBulbIcon />
+            <TotalSuggestions>
+              {suggestions.length} Suggestions
+            </TotalSuggestions>
+          </Container>
+        )}
         <SelectBox
           options={sortOptions}
           sortButton

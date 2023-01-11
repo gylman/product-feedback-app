@@ -15,4 +15,7 @@
   .level_0 {
     flex-direction: column;
   }
+  .level_1 {
+    gap: 32px;
+  }
 }
