@@ -9,8 +9,12 @@ const LeftBar = ({ suggestions, handler }) => {
   return (
     <Container className={classes.level_0}>
       <BoardTitle />
-      <TagsSection suggestions={suggestions} handler={handler} />
-      <RoadmapMini suggestions={suggestions} />
+      {window.innerWidth >= 600 && (
+        <>
+          <TagsSection suggestions={suggestions} handler={handler} />
+          <RoadmapMini suggestions={suggestions} />
+        </>
+      )}
     </Container>
   );
 };

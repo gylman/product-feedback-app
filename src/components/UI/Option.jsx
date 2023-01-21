@@ -18,6 +18,9 @@ const StyledOption = styled.li`
   &:last-child {
     border-radius: 0px 0px 10px 10px;
   }
+  @media (max-width: 600px) {
+    ${(props) => props.theme.typography.size13regular};
+  }
 `;
 
 const Option = (props) => {

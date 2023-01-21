@@ -1,7 +1,7 @@
 .level_0 {
   border-radius: 10px;
   display: flex;
-  align-items: end;
+  align-items: flex-end;
   padding: 24px;
   min-width: 255px;
   min-height: 137px;
@@ -23,5 +23,14 @@
   .level_0 {
     min-width: auto;
     width: 100%;
+  }
+}
+
+@media (max-width: 600px) {
+  .level_0 {
+    border-radius: 0px;
+    height: 72px;
+    min-height: auto;
+    padding: 16px 24px 15px 24px;
   }
 }

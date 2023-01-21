@@ -35,6 +35,11 @@ const theme = {
       "font-size": "13px",
       "line-height": "19px",
     },
+    size13_500: {
+      "font-weight": "500",
+      "font-size": "13px",
+      "line-height": "19px",
+    },
     size13regular: {
       "font-weight": "400",
       "font-size": "13px",
@@ -54,6 +59,11 @@ const theme = {
     },
     size15: {
       "font-weight": "400",
+      "font-size": "15px",
+      "line-height": "22px",
+    },
+    size15bold: {
+      "font-weight": "700",
       "font-size": "15px",
       "line-height": "22px",
     },

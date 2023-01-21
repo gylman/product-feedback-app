@@ -27,7 +27,10 @@ const StyledSelectBox = styled(StyledInput)`
   ${StyledArrow} {
     transform: ${(props) =>
       props.isShown ? "rotate(0deg)" : "rotate(180deg)"};
-  } ;
+  }
+  @media (max-width: 600px) {
+    ${(props) => props.theme.typography.size13regular};
+  }
 `;
 
 const SelectBox = (props) => {
