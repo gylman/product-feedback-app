@@ -15,3 +15,11 @@
     max-height: 178px;
   }
 }
+
+@media (max-width: 600px) {
+  .level_0 {
+    margin-top: -24px;
+    margin-left: -24px;
+    width: 100vw;
+  }
+}

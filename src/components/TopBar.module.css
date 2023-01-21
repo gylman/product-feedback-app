@@ -20,5 +20,7 @@
   .level_0 {
     padding: 8px 24px 8px 24px;
     border-radius: 0px;
+    margin-left: -24px;
+    width: 100vw;
   }
 }
