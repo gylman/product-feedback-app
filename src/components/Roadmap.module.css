@@ -35,3 +35,12 @@
     gap: 10px;
   }
 }
+
+@media (max-width: 600px) {
+  .level_1 {
+    border-radius: 0px;
+    padding: 26px 24px;
+    width: 100vw;
+    margin-top: -24px;
+  }
+}

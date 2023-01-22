@@ -30,6 +30,11 @@ const StyledButton = styled.button`
   @media (max-width: 600px) {
     ${({ theme }) => theme.typography.size13bold};
     padding: 10.5px 17px 10.5px 16px;
+    ${(props) =>
+      props.kind === "back" &&
+      css`
+        padding: 0px 0px 3px 0px;
+      `}};
   }
 `;
 

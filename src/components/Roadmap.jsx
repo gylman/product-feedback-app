@@ -5,13 +5,15 @@ import Container from "./Container";
 import RoadmapCard from "./RoadmapCard";
 import Arrow from "./UI/Arrow";
 import Button from "./UI/Button";
-import StyledLink from "./UI/StyledLink";
 import classes from "./Roadmap.module.css";
 import { useNavigate } from "react-router-dom";
 
 const PageTitle = styled.p`
   color: #ffffff;
   ${(props) => props.theme.typography.size24}
+  @media (max-width: 600px) {
+    ${(props) => props.theme.typography.size18}
+  }
 `;
 
 const Title = styled.p`
