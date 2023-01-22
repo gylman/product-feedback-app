@@ -24,6 +24,7 @@ const TopMostContainer = styled.div`
   }
   @media (max-width: 600px) {
     max-width: none;
+    min-height: 0;
   }
 `;
 
@@ -48,6 +49,10 @@ const Details = styled.p`
   white-space: nowrap;
   text-overflow: ellipsis;
   @media (max-width: 800px) {
+    ${(props) => props.theme.typography.size13regular};
+  }
+  @media (max-width: 600px) {
+    white-space: normal;
     ${(props) => props.theme.typography.size13regular};
   }
 `;
