@@ -1,5 +1,5 @@
 import cuid from "cuid";
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import Container from "./Container";
 import RoadmapCard from "./RoadmapCard";
@@ -22,6 +22,10 @@ const Title = styled.p`
   @media (max-width: 800px) {
     ${(props) => props.theme.typography.size14}
   }
+  @media (max-width: 600px) {
+    ${(props) => props.theme.typography.size13bold}
+    width: 100%;
+  }
 `;
 const Description = styled.p`
   color: #647196;
@@ -38,6 +42,12 @@ const ButtonTitle = styled.span`
 const Roadmap = ({ suggestions, handler }) => {
   const navigate = useNavigate();
   const grid = [[], [], []];
+  const [activeTab, setActiveTab] = useState("Planned");
+  const handleActiveTab = (event) => {
+    setActiveTab(event.target.textContent);
+  };
+  console.log(activeTab);
+
   suggestions.forEach((suggestion) => {
     (suggestion.status === "Planned" &&
       grid[0].push(
@@ -103,29 +113,46 @@ const Roadmap = ({ suggestions, handler }) => {
           </Button>
         </Container>
       </Container>
-      <Container className={classes.level_3}>
-        <Container className={classes.level_4}>
-          <Container className={classes.level_5}>
+      {window.innerWidth <= 600 ? (
+        <Container className={classes.level_0_mob}>
+          <Container
+            onClick={handleActiveTab}
+            className={`${classes.level_5} ${classes.active_tab}`}
+          >
             <Title>Planned ({grid[0].length})</Title>
-            <Description>Ideas prioritized for research</Description>
           </Container>
-          {grid[0]}
-        </Container>
-        <Container className={classes.level_4}>
-          <Container className={classes.level_5}>
+          <Container onClick={handleActiveTab} className={classes.level_5}>
             <Title>In-Progress ({grid[1].length})</Title>
-            <Description>Currently being developed</Description>
           </Container>
-          {grid[1]}
-        </Container>
-        <Container className={classes.level_4}>
-          <Container className={classes.level_5}>
+          <Container onClick={handleActiveTab} className={classes.level_5}>
             <Title>Live ({grid[2].length})</Title>
-            <Description>Released features</Description>
           </Container>
-          {grid[2]}
         </Container>
-      </Container>
+      ) : (
+        <Container className={classes.level_3}>
+          <Container className={classes.level_4}>
+            <Container className={classes.level_5}>
+              <Title>Planned ({grid[0].length})</Title>
+              <Description>Ideas prioritized for research</Description>
+            </Container>
+            {grid[0]}
+          </Container>
+          <Container className={classes.level_4}>
+            <Container className={classes.level_5}>
+              <Title>In-Progress ({grid[1].length})</Title>
+              <Description>Currently being developed</Description>
+            </Container>
+            {grid[1]}
+          </Container>
+          <Container className={classes.level_4}>
+            <Container className={classes.level_5}>
+              <Title>Live ({grid[2].length})</Title>
+              <Description>Released features</Description>
+            </Container>
+            {grid[2]}
+          </Container>
+        </Container>
+      )}
     </Container>
   );
 };
