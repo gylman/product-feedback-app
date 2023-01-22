@@ -22,6 +22,9 @@ const TopMostContainer = styled.div`
     max-width: 223px;
     min-height: 251px;
   }
+  @media (max-width: 600px) {
+    max-width: none;
+  }
 `;
 
 const Title = styled.p`
