@@ -47,7 +47,6 @@ const Roadmap = ({ suggestions, handler }) => {
   const handleActiveTab = (event) => {
     setActiveTab(event.target.textContent);
   };
-  console.log(activeTab);
 
   suggestions.forEach((suggestion) => {
     (suggestion.status === "Planned" &&
