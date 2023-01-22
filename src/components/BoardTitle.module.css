@@ -28,6 +28,8 @@
 
 @media (max-width: 600px) {
   .level_0 {
+    align-items: center;
+    justify-content: space-between;
     border-radius: 0px;
     height: 72px;
     min-height: auto;

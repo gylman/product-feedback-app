@@ -1,6 +1,8 @@
 import styled from "styled-components";
 import Container from "./Container";
 import classes from "./BoardTitle.module.css";
+import hamburger from "../assets/icons/hamburger.png";
+import close from "../assets/icons/close.png";
 
 const Title = styled.p`
   ${(props) => props.theme.typography.size20};
@@ -18,12 +20,21 @@ const Description = styled.p`
   }
 `;
 
-const BoardTitle = () => (
+const BoardTitle = ({ displayRightPanel, handler }) => (
   <Container className={classes.level_0}>
     <Container className={classes.level_1}>
       <Title>Frontend Mentor</Title>
       <Description>Feedback Board</Description>
     </Container>
+    {window.innerWidth <= 600 && (
+      <Container onClick={handler} className={classes.level_2}>
+        {displayRightPanel ? (
+          <img src={close} alt="close" />
+        ) : (
+          <img src={hamburger} alt="hamburger" />
+        )}
+      </Container>
+    )}
   </Container>
 );
 export default BoardTitle;
