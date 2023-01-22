@@ -34,6 +34,11 @@ const StyledPinButton = styled(StyledButton)`
     props.direction === "horizontal" &&
     css`
       padding: 11px 12.5px 10px 16px;
+      @media (max-width: 600px) {
+        padding: 6px 13px 7px 16px;
+        min-width: 0;
+        min-height: 0;
+      }
     `}
   ${(props) =>
     props.upvoted &&

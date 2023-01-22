@@ -13,6 +13,7 @@ export const Title = styled.h3`
   white-space: nowrap;
   text-overflow: ellipsis;
   @media (max-width: 600px) {
+    margin-bottom: 9px;
     ${(props) => props.theme.typography.size13bold};
   }
 `;
@@ -26,6 +27,8 @@ export const Details = styled.p`
   white-space: nowrap;
   text-overflow: ellipsis;
   @media (max-width: 600px) {
+    margin-right: 0px;
+    white-space: normal;
     ${(props) => props.theme.typography.size13regular};
   }
 `;

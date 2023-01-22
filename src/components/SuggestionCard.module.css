@@ -12,8 +12,22 @@
   min-width: 0px;
 }
 
+.level_3 {
+  justify-content: space-between;
+}
+
 .level_2 {
   align-items: center;
   width: auto;
   gap: 8px;
+}
+
+@media (max-width: 600px) {
+  .level_0 {
+    background-color: #ffffff;
+    justify-content: space-between;
+    flex-direction: column;
+    gap: 16px;
+    padding: 24px;
+  }
 }
