@@ -17,11 +17,21 @@ const LeftBar = ({ suggestions, handler }) => {
         displayRightPanel={displayRightPanel}
         handler={handleHamburger}
       />
-      {window.innerWidth >= 600 && (
+      {window.innerWidth > 600 ? (
         <>
           <TagsSection suggestions={suggestions} handler={handler} />
           <RoadmapMini suggestions={suggestions} />
         </>
+      ) : (
+        displayRightPanel && (
+          <>
+            <Container onClick={handleHamburger} className={classes.level_1} />
+            <Container className={classes.level_2}>
+              <TagsSection suggestions={suggestions} handler={handler} />
+              <RoadmapMini suggestions={suggestions} />
+            </Container>
+          </>
+        )
       )}
     </Container>
   );

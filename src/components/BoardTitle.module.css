@@ -35,4 +35,7 @@
     min-height: auto;
     padding: 16px 24px 15px 24px;
   }
+  .level_2 {
+    transition: all 0.5s ease-in;
+  }
 }

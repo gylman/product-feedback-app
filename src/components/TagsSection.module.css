@@ -15,3 +15,9 @@
     min-width: 211px;
   }
 }
+
+@media (max-width: 1160px) {
+  .level_0 {
+    width: 100%;
+  }
+}
