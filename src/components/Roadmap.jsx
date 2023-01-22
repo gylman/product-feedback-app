@@ -23,6 +23,7 @@ const Title = styled.p`
     ${(props) => props.theme.typography.size14}
   }
   @media (max-width: 600px) {
+    color: #abb0c7;
     ${(props) => props.theme.typography.size13bold}
     width: 100%;
   }
@@ -115,17 +116,26 @@ const Roadmap = ({ suggestions, handler }) => {
       </Container>
       {window.innerWidth <= 600 ? (
         <Container className={classes.level_0_mob}>
-          <Container
-            onClick={handleActiveTab}
-            className={`${classes.level_5} ${classes.active_tab}`}
-          >
-            <Title>Planned ({grid[0].length})</Title>
+          <Container onClick={handleActiveTab} className={classes.level_5}>
+            <Title
+              className={activeTab.includes("Planned") && classes.active_tab}
+            >
+              Planned ({grid[0].length})
+            </Title>
           </Container>
           <Container onClick={handleActiveTab} className={classes.level_5}>
-            <Title>In-Progress ({grid[1].length})</Title>
+            <Title
+              className={
+                activeTab.includes("In-Progress") && classes.active_tab
+              }
+            >
+              In-Progress ({grid[1].length})
+            </Title>
           </Container>
           <Container onClick={handleActiveTab} className={classes.level_5}>
-            <Title>Live ({grid[2].length})</Title>
+            <Title className={activeTab.includes("Live") && classes.active_tab}>
+              Live ({grid[2].length})
+            </Title>
           </Container>
         </Container>
       ) : (
