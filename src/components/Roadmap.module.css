@@ -55,11 +55,13 @@
     margin-top: -24px;
   }
   .level_3 {
+    gap: 0px;
     width: 100%;
     justify-content: flex-start;
   }
   .level_4 {
     gap: 16px;
+    width: 100%;
   }
   .level_5 {
     align-items: center;

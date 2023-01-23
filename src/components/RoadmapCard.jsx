@@ -23,6 +23,7 @@ const TopMostContainer = styled.div`
     min-height: 251px;
   }
   @media (max-width: 600px) {
+    width: 100%;
     max-width: none;
     min-height: 0;
   }
