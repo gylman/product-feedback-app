@@ -138,16 +138,6 @@ export const suggestionList = [
     comments: { quantity: 0, commentList: [] },
   },
   {
-    id: "2442",
-    upvotes: 3,
-    title: "Preview images not loading",
-    details:
-      "Challenge preview images are missing when you apply a filter.Challenge preview images are missing when you apply a filterChallenge preview images are missing when you apply a filterChallenge preview images are missing when you apply a filterChallenge preview images are missing when you apply a filterChallenge preview images are missing when you apply a filterChallenge preview images are missing when you apply a filterChallenge preview images are missing when you apply a filterChallenge preview images are missing when you apply a filterChallenge preview images are missing when you apply a filter",
-    tag: "Bug",
-    upvotedByMe: false,
-    status: "Live",
-    comments: { quantity: 0, commentList: [] },
-  },
 ];
 
 export const currentBrowser = {
