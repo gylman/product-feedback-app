@@ -23,7 +23,7 @@ const TagsSection = ({ suggestions, handler }) => {
           .map((suggestion) => suggestion.id);
       }
     });
-  }, [selected]);
+  }, [selected, suggestions, handler]);
 
   return (
     <Container className={classes.level_0}>

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useCallback, useState } from "react";
 import Container from "../components/Container";
 import NoFeedBackScreen from "../components/NoFeedbackScreen";
 import Suggestions from "../components/Suggestions";
@@ -10,9 +10,9 @@ const IndexScreen = (props) => {
   const [suggestionIDs, setSuggestionsIDs] = useState(
     props.suggestions.map((suggestion) => suggestion.id)
   );
-  const handleSetSuggestionsIDs = (handler) => {
+  const handleSetSuggestionsIDs = useCallback((handler) => {
     setSuggestionsIDs(handler);
-  };
+  }, []);
 
   return (
     <Container className={classes.level_0}>

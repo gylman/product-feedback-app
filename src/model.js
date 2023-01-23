@@ -137,7 +137,6 @@ export const suggestionList = [
     status: "Live",
     comments: { quantity: 0, commentList: [] },
   },
-  {
 ];
 
 export const currentBrowser = {
