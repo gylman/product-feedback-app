@@ -1,11 +1,11 @@
 import { useNavigate } from "react-router-dom";
+import classes from "./TopBar.module.css";
 import styled from "styled-components";
 import Container from "./Container";
 import Arrow from "./UI/Arrow";
 import Button from "./UI/Button";
 import LightBulbIcon from "./UI/LightBulbIcon";
 import SelectBox from "./UI/SelectBox";
-import classes from "./TopBar.module.css";
 
 const sortOptions = [
   { label: "Most upvotes" },

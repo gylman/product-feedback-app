@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import classes from "./Comment.module.css";
 import {
   AuthorImage,
   FullName,
@@ -9,7 +10,6 @@ import {
 import Container from "./Container.jsx";
 import Button from "./UI/Button";
 import StyledInput from "./UI/StyledInput";
-import classes from "./Comment.module.css";
 
 const Comment = ({ comment, handler }) => {
   const [isReplying, setIsReplying] = useState(false);

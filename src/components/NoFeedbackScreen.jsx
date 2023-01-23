@@ -1,9 +1,9 @@
 import { useNavigate } from "react-router-dom";
+import classes from "./NoFeedbackScreen.module.css";
 import styled from "styled-components";
 import Container from "./Container";
 import Button from "./UI/Button";
 import ImageNoFeedback from "./UI/ImageNoFeedback";
-import classes from "./NoFeedbackScreen.module.css";
 
 const Title = styled.h1`
   color: #3a4374;

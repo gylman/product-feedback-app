@@ -1,10 +1,10 @@
 import React, { useRef, useState } from "react";
+import classes from "./AddComment.module.css";
 import styled from "styled-components";
 import StyledInput from "./UI/StyledInput";
 import Button from "./UI/Button";
 import Container from "./Container";
 import { currentBrowser } from "../model";
-import classes from "./AddComment.module.css";
 
 const TopMostContainer = styled.div`
   padding: 24px 32px 32px 34px;

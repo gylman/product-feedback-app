@@ -1,3 +1,4 @@
+import classes from "./RoadmapMini.module.css";
 import Container from "./Container";
 import {
   Header,
@@ -7,7 +8,6 @@ import {
   Quantity,
 } from "./RoadmapMiniStyles";
 import StyledLink from "./UI/StyledLink";
-import classes from "./RoadmapMini.module.css";
 
 const RoadmapMini = ({ suggestions }) => {
   const statusesAmount = [

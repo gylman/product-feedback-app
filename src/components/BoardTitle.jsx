@@ -1,6 +1,6 @@
+import classes from "./BoardTitle.module.css";
 import styled from "styled-components";
 import Container from "./Container";
-import classes from "./BoardTitle.module.css";
 import hamburger from "../assets/icons/hamburger.png";
 import close from "../assets/icons/close.png";
 

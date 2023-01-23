@@ -1,9 +1,9 @@
 import React, { useState } from "react";
+import classes from "./LeftBar.module.css";
 import BoardTitle from "./BoardTitle";
 import Container from "./Container";
 import RoadmapMini from "./RoadmapMini";
 import TagsSection from "./TagsSection";
-import classes from "./LeftBar.module.css";
 
 const LeftBar = ({ suggestions, handler }) => {
   const [displayRightPanel, setDisplayRightPanel] = useState(false);

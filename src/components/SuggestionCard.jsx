@@ -1,9 +1,9 @@
+import classes from "./SuggestionCard.module.css";
 import Arrow from "./UI/Arrow";
 import BubbleIcon from "./UI/BubbleIcon";
 import Button from "./UI/Button";
 import { Content, Title, Details, Num } from "./SuggestionCardStyles";
 import Container from "./Container";
-import classes from "./SuggestionCard.module.css";
 
 const SuggestionCard = ({ suggestion, handler }) => {
   const handleQuantity = () => {

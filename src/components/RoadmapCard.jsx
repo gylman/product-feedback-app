@@ -1,11 +1,11 @@
 import React from "react";
+import classes from "./RoadmapCard.module.css";
 import styled from "styled-components";
 import BubbleIcon from "./UI/BubbleIcon";
 import { Num } from "./SuggestionCardStyles";
 import Button from "./UI/Button";
 import Arrow from "./UI/Arrow";
 import Container from "./Container";
-import classes from "./RoadmapCard.module.css";
 
 const TopMostContainer = styled.div`
   padding: 25px 32px 32px 32px;

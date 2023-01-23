@@ -1,5 +1,6 @@
 import cuid from "cuid";
 import React from "react";
+import classes from "./CommentsSection.module.css";
 import {
   CommentQuantity,
   CommentsWrapper,
@@ -8,7 +9,6 @@ import {
 import horizontal_line from "../assets/images/horizontal_line.svg";
 import Comment from "./Comment.jsx";
 import Container from "./Container";
-import classes from "./CommentsSection.module.css";
 import { currentBrowser } from "../model";
 
 const CommentsSection = ({ suggestion, handler }) => {

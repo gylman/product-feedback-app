@@ -1,4 +1,5 @@
 import React from "react";
+import classes from "./SuggestionDetails.module.css";
 import SuggestionCard from "./SuggestionCard";
 import AddComment from "./AddComment";
 import CommentsSection from "./CommentsSection";
@@ -7,7 +8,6 @@ import { useParams } from "react-router-dom";
 import Arrow from "./UI/Arrow";
 import Button from "./UI/Button";
 import StyledLink from "./UI/StyledLink";
-import classes from "./SuggestionDetails.module.css";
 const SuggestionDetails = (props) => {
   let params = useParams();
 
