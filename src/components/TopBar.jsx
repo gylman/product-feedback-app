@@ -6,13 +6,8 @@ import Arrow from "./UI/Arrow";
 import Button from "./UI/Button";
 import LightBulbIcon from "./UI/LightBulbIcon";
 import SelectBox from "./UI/SelectBox";
-
-const sortOptions = [
-  { label: "Most upvotes" },
-  { label: "Least upvotes" },
-  { label: "Most comments" },
-  { label: "Least comments" },
-];
+import { useCallback } from "react";
+import { sortOptions } from "../model";
 
 const TotalSuggestions = styled.p`
   ${(props) => props.theme.typography.size18};
@@ -23,30 +18,38 @@ const TotalSuggestions = styled.p`
 
 const TopBar = ({ suggestions, handler }) => {
   const navigate = useNavigate();
-  const handleSort = (option) => {
-    return [
-      ...((option === "Most upvotes" &&
-        suggestions.sort((first, second) => second.upvotes - first.upvotes)) ||
-        (option === "Least upvotes" &&
+  const handleSort = useCallback(
+    (option) => {
+      return [
+        ...((option === "Most upvotes" &&
           suggestions.sort(
-            (first, second) => first.upvotes - second.upvotes
+            (first, second) => second.upvotes - first.upvotes
           )) ||
-        (option === "Most comments" &&
-          suggestions.sort(
-            (first, second) =>
-              second.comments.quantity - first.comments.quantity
-          )) ||
-        (option === "Least comments" &&
-          suggestions.sort(
-            (first, second) =>
-              first.comments.quantity - second.comments.quantity
-          ))),
-    ].map((suggestion) => suggestion.id);
-  };
+          (option === "Least upvotes" &&
+            suggestions.sort(
+              (first, second) => first.upvotes - second.upvotes
+            )) ||
+          (option === "Most comments" &&
+            suggestions.sort(
+              (first, second) =>
+                second.comments.quantity - first.comments.quantity
+            )) ||
+          (option === "Least comments" &&
+            suggestions.sort(
+              (first, second) =>
+                first.comments.quantity - second.comments.quantity
+            ))),
+      ].map((suggestion) => suggestion.id);
+    },
+    [suggestions]
+  );
 
-  const handleSetSort = (option) => {
-    handler(() => handleSort(option));
-  };
+  const handleSetSort = useCallback(
+    (option) => {
+      handler(() => handleSort(option));
+    },
+    [handler, handleSort]
+  );
 
   return (
     <Container className={classes.level_0}>

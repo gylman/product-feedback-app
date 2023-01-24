@@ -147,3 +147,10 @@ export const currentBrowser = {
   children: [],
   content: "",
 };
+
+export const sortOptions = [
+  { label: "Most upvotes" },
+  { label: "Least upvotes" },
+  { label: "Most comments" },
+  { label: "Least comments" },
+];

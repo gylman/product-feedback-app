@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import classes from "./IndexScreen.module.css";
 import Container from "../components/Container";
 import NoFeedBackScreen from "../components/NoFeedbackScreen";
@@ -6,34 +6,34 @@ import Suggestions from "../components/Suggestions";
 import TopBar from "../components/TopBar";
 import LeftBar from "../components/LeftBar";
 
-const IndexScreen = (props) => {
+const IndexScreen = ({ suggestions, handler }) => {
   const [suggestionIDs, setSuggestionsIDs] = useState(
-    props.suggestions.map((suggestion) => suggestion.id)
+    suggestions.map((suggestion) => suggestion.id)
   );
+  const [sortSuggestions, setSortSuggestions] = useState(suggestions);
+
   const handleSetSuggestionsIDs = useCallback((handler) => {
     setSuggestionsIDs(handler);
   }, []);
 
+  useEffect(() => {
+    setSortSuggestions(
+      suggestionIDs.map((id) =>
+        suggestions.find((suggestion) => suggestion.id === id)
+      )
+    );
+  }, [suggestionIDs, suggestions]);
+
   return (
     <Container className={classes.level_0}>
-      <LeftBar
-        handler={handleSetSuggestionsIDs}
-        suggestions={props.suggestions}
-      />
+      <LeftBar handler={handleSetSuggestionsIDs} suggestions={suggestions} />
       <Container className={classes.level_1}>
         <TopBar
-          suggestions={suggestionIDs.map((id) =>
-            props.suggestions.find((suggestion) => suggestion.id === id)
-          )}
+          suggestions={sortSuggestions}
           handler={handleSetSuggestionsIDs}
         />
         {suggestionIDs.length ? (
-          <Suggestions
-            suggestions={suggestionIDs.map((id) =>
-              props.suggestions.find((suggestion) => suggestion.id === id)
-            )}
-            handler={props.handler}
-          />
+          <Suggestions suggestions={sortSuggestions} handler={handler} />
         ) : (
           <NoFeedBackScreen />
         )}

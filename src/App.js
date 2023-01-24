@@ -3,15 +3,15 @@ import SuggestionDetails from "./components/SuggestionDetails";
 import Roadmap from "./components/Roadmap";
 import { suggestionList } from "./model";
 import { Route, Routes } from "react-router-dom";
-import { useState } from "react";
+import { useCallback, useState } from "react";
 import IndexScreen from "./screens/IndexScreen";
 
 function App() {
   const [suggestions, setSuggestions] = useState(suggestionList);
 
-  function handleSetSuggestions(handler) {
+  const handleSetSuggestions = useCallback((handler) => {
     setSuggestions(handler);
-  }
+  }, []);
 
   return (
     <Routes>

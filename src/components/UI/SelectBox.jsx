@@ -1,5 +1,5 @@
 import styled, { css } from "styled-components";
-import { useState } from "react";
+import { useState, useCallback } from "react";
 import StyledInput from "./StyledInput";
 import StyledArrow from "./StyledArrow";
 import OptionsContainer from "./OptionsContainer";
@@ -41,10 +41,10 @@ const SelectBox = (props) => {
     // Ask about usage of the previous state and returning state using a callback function
     setIsShown(isShown ? false : true);
   };
-  const handleOptions = props.handleOptions;
+  const handleOption = useCallback(props.handleOption, []);
   useEffect(() => {
-    handleOptions && handleOptions(option);
-  }, [option, handleOptions]);
+    handleOption && handleOption(option);
+  }, [option, handleOption]);
 
   return (
     <SelectBoxContainer>
