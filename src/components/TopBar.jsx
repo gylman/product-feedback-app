@@ -18,38 +18,30 @@ const TotalSuggestions = styled.p`
 
 const TopBar = ({ suggestions, handler }) => {
   const navigate = useNavigate();
-  const handleSort = useCallback(
-    (option) => {
-      return [
-        ...((option === "Most upvotes" &&
+  const handleSort = (option) => {
+    return [
+      ...((option === "Most upvotes" &&
+        suggestions.sort((first, second) => second.upvotes - first.upvotes)) ||
+        (option === "Least upvotes" &&
           suggestions.sort(
-            (first, second) => second.upvotes - first.upvotes
+            (first, second) => first.upvotes - second.upvotes
           )) ||
-          (option === "Least upvotes" &&
-            suggestions.sort(
-              (first, second) => first.upvotes - second.upvotes
-            )) ||
-          (option === "Most comments" &&
-            suggestions.sort(
-              (first, second) =>
-                second.comments.quantity - first.comments.quantity
-            )) ||
-          (option === "Least comments" &&
-            suggestions.sort(
-              (first, second) =>
-                first.comments.quantity - second.comments.quantity
-            ))),
-      ].map((suggestion) => suggestion.id);
-    },
-    [suggestions]
-  );
+        (option === "Most comments" &&
+          suggestions.sort(
+            (first, second) =>
+              second.comments.quantity - first.comments.quantity
+          )) ||
+        (option === "Least comments" &&
+          suggestions.sort(
+            (first, second) =>
+              first.comments.quantity - second.comments.quantity
+          ))),
+    ].map((suggestion) => suggestion.id);
+  };
 
-  const handleSetSort = useCallback(
-    (option) => {
-      handler(() => handleSort(option));
-    },
-    [handler, handleSort]
-  );
+  const handleSetSort = (option) => {
+    handler(() => handleSort(option));
+  };
 
   return (
     <Container className={classes.level_0}>
