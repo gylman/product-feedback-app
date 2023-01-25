@@ -6,7 +6,6 @@ import Arrow from "./UI/Arrow";
 import Button from "./UI/Button";
 import LightBulbIcon from "./UI/LightBulbIcon";
 import SelectBox from "./UI/SelectBox";
-import { useCallback } from "react";
 import { sortOptions } from "../model";
 
 const TotalSuggestions = styled.p`

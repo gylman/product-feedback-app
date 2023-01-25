@@ -1,9 +1,8 @@
 import styled, { css } from "styled-components";
-import { useState, useCallback } from "react";
+import { useState } from "react";
 import StyledInput from "./StyledInput";
 import StyledArrow from "./StyledArrow";
 import OptionsContainer from "./OptionsContainer";
-import { useEffect } from "react";
 
 const SelectBoxContainer = styled.div`
   position: relative;

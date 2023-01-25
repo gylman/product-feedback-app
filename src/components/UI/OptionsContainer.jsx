@@ -22,7 +22,6 @@ const OptionsContainer = (props) => (
       <div key={cuid()}>
         <Option
           option={props.option}
-          handleOptionClick={props.handleOptionClick}
           setIsShown={props.setIsShown}
           setOption={props.setOption}
           handler={props.handler}
