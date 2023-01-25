@@ -25,6 +25,7 @@ const OptionsContainer = (props) => (
           handleOptionClick={props.handleOptionClick}
           setIsShown={props.setIsShown}
           setOption={props.setOption}
+          handler={props.handler}
         >
           {option}
         </Option>

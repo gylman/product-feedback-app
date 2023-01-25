@@ -41,10 +41,6 @@ const SelectBox = (props) => {
     // Ask about usage of the previous state and returning state using a callback function
     setIsShown(isShown ? false : true);
   };
-  const handleOption = useCallback(props.handleOption, []);
-  useEffect(() => {
-    handleOption && handleOption(option);
-  }, [option, handleOption]);
 
   return (
     <SelectBoxContainer>
@@ -67,6 +63,7 @@ const SelectBox = (props) => {
           setIsShown={setIsShown}
           setOption={setOption}
           top={props.top}
+          handler={props.handleOption}
         />
       )}
     </SelectBoxContainer>

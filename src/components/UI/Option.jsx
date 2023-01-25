@@ -24,13 +24,14 @@ const StyledOption = styled.li`
 `;
 
 const Option = (props) => {
-  const { setIsShown, setOption } = props;
+  const { setIsShown, setOption, handler } = props;
 
   // Can this logic be implemented if we declare the function outside of the component's scope?
   const handleOptionClick = (event) => {
     event.preventDefault();
     setOption(event.target.textContent);
     setIsShown(false);
+    handler(event.target.textContent);
   };
 
   return (
