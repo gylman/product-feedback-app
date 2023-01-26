@@ -1,4 +1,4 @@
-import classes from "./SuggestionCard.module.css";
+import classes from "./styles/SuggestionCard.module.css";
 import Arrow from "./UI/Arrow";
 import BubbleIcon from "./UI/BubbleIcon";
 import Button from "./UI/Button";

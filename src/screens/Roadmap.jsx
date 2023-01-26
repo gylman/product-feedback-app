@@ -1,11 +1,11 @@
 import cuid from "cuid";
 import React, { useState } from "react";
-import classes from "./Roadmap.module.css";
+import classes from "./styles/Roadmap.module.css";
 import styled from "styled-components";
-import Container from "./Container";
-import RoadmapCard from "./RoadmapCard";
-import Arrow from "./UI/Arrow";
-import Button from "./UI/Button";
+import Container from "../components/Container";
+import RoadmapCard from "../components/RoadmapCard";
+import Arrow from "../components/UI/Arrow";
+import Button from "../components/UI/Button";
 import { useNavigate } from "react-router-dom";
 
 const PageTitle = styled.p`

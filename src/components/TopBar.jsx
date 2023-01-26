@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import classes from "./TopBar.module.css";
+import classes from "./styles/TopBar.module.css";
 import styled from "styled-components";
 import Container from "./Container";
 import Arrow from "./UI/Arrow";

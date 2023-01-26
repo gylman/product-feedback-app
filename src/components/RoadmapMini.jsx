@@ -1,4 +1,4 @@
-import classes from "./RoadmapMini.module.css";
+import classes from "./styles/RoadmapMini.module.css";
 import Container from "./Container";
 import {
   Header,

@@ -1,6 +1,6 @@
 import cuid from "cuid";
 import React, { useEffect, useState } from "react";
-import classes from "./TagsSection.module.css";
+import classes from "./styles/TagsSection.module.css";
 import Container from "./Container";
 import Button from "./UI/Button";
 

@@ -1,10 +1,10 @@
-import CreateEditFeedback from "./components/CreateEditFeedback";
-import SuggestionDetails from "./components/SuggestionDetails";
-import Roadmap from "./components/Roadmap";
+import CreateEditFeedback from "./screens/CreateEditFeedback";
+import SuggestionDetails from "./screens/SuggestionDetails";
+import Roadmap from "./screens/Roadmap";
 import { suggestionList } from "./model";
 import { Route, Routes } from "react-router-dom";
 import { useCallback, useState } from "react";
-import IndexScreen from "./components/IndexScreen";
+import IndexScreen from "./screens/IndexScreen";
 
 function App() {
   const [suggestions, setSuggestions] = useState(suggestionList);

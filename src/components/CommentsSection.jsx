@@ -1,6 +1,6 @@
 import cuid from "cuid";
 import React from "react";
-import classes from "./CommentsSection.module.css";
+import classes from "./styles/CommentsSection.module.css";
 import {
   CommentQuantity,
   CommentsWrapper,

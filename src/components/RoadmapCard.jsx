@@ -1,5 +1,5 @@
 import React from "react";
-import classes from "./RoadmapCard.module.css";
+import classes from "./styles/RoadmapCard.module.css";
 import styled from "styled-components";
 import BubbleIcon from "./UI/BubbleIcon";
 import { Num } from "./SuggestionCardStyles";

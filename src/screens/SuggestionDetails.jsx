@@ -1,13 +1,13 @@
 import React from "react";
-import classes from "./SuggestionDetails.module.css";
-import SuggestionCard from "./SuggestionCard";
-import AddComment from "./AddComment";
-import CommentsSection from "./CommentsSection";
-import Container from "./Container";
+import classes from "./styles/SuggestionDetails.module.css";
+import SuggestionCard from "../components/SuggestionCard";
+import AddComment from "../components/AddComment";
+import CommentsSection from "../components/CommentsSection";
+import Container from "../components/Container";
 import { useParams } from "react-router-dom";
-import Arrow from "./UI/Arrow";
-import Button from "./UI/Button";
-import StyledLink from "./UI/StyledLink";
+import Arrow from "../components/UI/Arrow";
+import Button from "../components/UI/Button";
+import StyledLink from "../components/UI/StyledLink";
 const SuggestionDetails = (props) => {
   let params = useParams();
 

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import classes from "./Comment.module.css";
+import classes from "./styles/Comment.module.css";
 import {
   AuthorImage,
   FullName,

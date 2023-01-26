@@ -1,16 +1,16 @@
 import React from "react";
-import classes from "./CreateEditFeedback.module.css";
+import classes from "./styles/CreateEditFeedback.module.css";
 import { useParams } from "react-router-dom";
 import { useState } from "react";
 import styled from "styled-components";
 import plus_icon from "../assets/icons/modal_plus_icon.svg";
 import pen_icon from "../assets/icons/modal_pen_icon.svg";
-import InputRow from "./InputRow";
-import Arrow from "./UI/Arrow";
-import Button from "./UI/Button";
-import Input from "./UI/Input";
-import SelectBox from "./UI/SelectBox";
-import Container from "./Container";
+import InputRow from "../components/InputRow";
+import Arrow from "../components/UI/Arrow";
+import Button from "../components/UI/Button";
+import Input from "../components/UI/Input";
+import SelectBox from "../components/UI/SelectBox";
+import Container from "../components//Container";
 import { useNavigate } from "react-router";
 import cuid from "cuid";
 

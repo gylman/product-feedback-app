@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import classes from "./LeftBar.module.css";
+import classes from "./styles/LeftBar.module.css";
 import BoardTitle from "./BoardTitle";
 import Container from "./Container";
 import RoadmapMini from "./RoadmapMini";

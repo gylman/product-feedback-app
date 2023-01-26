@@ -1,5 +1,5 @@
 import React, { useRef, useState } from "react";
-import classes from "./AddComment.module.css";
+import classes from "./styles/AddComment.module.css";
 import styled from "styled-components";
 import StyledInput from "./UI/StyledInput";
 import Button from "./UI/Button";

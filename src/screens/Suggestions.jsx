@@ -1,9 +1,9 @@
 import cuid from "cuid";
 import React from "react";
-import classes from "./Suggestions.module.css";
-import Container from "./Container";
-import SuggestionCard from "./SuggestionCard";
-import StyledLink from "./UI/StyledLink";
+import classes from "./styles/Suggestions.module.css";
+import Container from "../components/Container";
+import SuggestionCard from "../components/SuggestionCard";
+import StyledLink from "../components/UI/StyledLink";
 
 const Suggestions = ({ suggestions, handler }) => {
   return (
