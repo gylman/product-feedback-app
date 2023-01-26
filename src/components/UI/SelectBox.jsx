@@ -37,8 +37,7 @@ const SelectBox = (props) => {
   const [isShown, setIsShown] = useState(false);
 
   const handleSelectBoxClick = () => {
-    // Ask about usage of the previous state and returning state using a callback function
-    setIsShown(isShown ? false : true);
+    setIsShown((prevState) => !prevState);
   };
 
   return (
