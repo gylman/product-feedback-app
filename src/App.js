@@ -4,7 +4,7 @@ import Roadmap from "./components/Roadmap";
 import { suggestionList } from "./model";
 import { Route, Routes } from "react-router-dom";
 import { useCallback, useState } from "react";
-import IndexScreen from "./screens/IndexScreen";
+import IndexScreen from "./components/IndexScreen";
 
 function App() {
   const [suggestions, setSuggestions] = useState(suggestionList);

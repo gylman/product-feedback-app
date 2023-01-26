@@ -1,10 +1,10 @@
 import React, { useCallback, useEffect, useState } from "react";
 import classes from "./IndexScreen.module.css";
-import Container from "../components/Container";
-import NoFeedBackScreen from "../components/NoFeedbackScreen";
-import Suggestions from "../components/Suggestions";
-import TopBar from "../components/TopBar";
-import LeftBar from "../components/LeftBar";
+import Container from "./Container";
+import NoFeedBackScreen from "./NoFeedbackScreen";
+import Suggestions from "./Suggestions";
+import TopBar from "./TopBar";
+import LeftBar from "./LeftBar";
 
 const IndexScreen = ({ suggestions, handler }) => {
   const [suggestionIDs, setSuggestionsIDs] = useState(
