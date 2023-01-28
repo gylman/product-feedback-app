@@ -1,7 +1,6 @@
 import React, { useReducer } from "react";
 import classes from "./styles/CreateEditFeedback.module.css";
 import { useParams } from "react-router-dom";
-import { useState } from "react";
 import plus_icon from "../assets/icons/modal_plus_icon.svg";
 import pen_icon from "../assets/icons/modal_pen_icon.svg";
 import InputRow from "../components/InputRow";
@@ -34,79 +33,143 @@ const statuses = [
   { label: "Live" },
 ];
 
-const titleReducer = (state, action) => {
-  if (action.type === "USER_INPUT") {
-    return { value: action.val, isEmpty: action.val.length === 0 };
-  }
-  if (action.type === "INPUT_NO_EMPTY") {
-    return { value: state.val, isEmpty: action.val };
-  }
-  return { value: "", isEmpty: false };
-};
-
-const detailReducer = (state, action) => {
-  if (action.type === "USER_INPUT") {
-    return { value: action.val, isEmpty: action.val.length === 0 };
-  }
-  if (action.type === "INPUT_NO_EMPTY") {
-    return { value: state.val, isEmpty: action.val };
-  }
-
-  return { value: "", isEmpty: false };
-};
-
 const CreateEditFeedback = ({ edit, suggestions, handler }) => {
   const navigate = useNavigate();
   const params = useParams();
   const feedback = params.id
     ? { ...suggestions.find((suggestion) => suggestion.id === params.id) }
     : {};
-
-  const [titleState, dispatchTitle] = useReducer(titleReducer, {
-    value: edit ? feedback.title : "",
-    isEmpty: false,
-  });
-
-  const [detailState, dispatchDetail] = useReducer(detailReducer, {
-    value: edit ? feedback.details : "",
-    isEmpty: false,
-  });
-
-  const [category, setCategory] = useState(categories[0].label);
-  const [status, setStatus] = useState(statuses[0].label);
   const id = edit ? feedback.id : cuid();
-  //const [formData, setFormData] = useState({});
 
-  const handleTitle = (event) => {
-    dispatchTitle({ type: "USER_INPUT", val: event.target.value.trim() });
+  const formReducer = (state, action) => {
+    if (action.type === "TITLE_INPUT") {
+      return {
+        ...state,
+        title: {
+          value: action.val,
+          isValid: action.val.length !== 0,
+          touched: true,
+        },
+      };
+    }
+    if (action.type === "DETAILS_INPUT") {
+      return {
+        ...state,
+        details: {
+          value: action.val,
+          isValid: action.val.length !== 0,
+          touched: true,
+        },
+      };
+    }
+    if (action.type === "TITLE_VALID") {
+      return {
+        ...state,
+        title: { ...state.title, isValid: action.val },
+      };
+    }
+    if (action.type === "DETAILS_VALID") {
+      return {
+        ...state,
+        details: { ...state.details, isValid: action.val },
+      };
+    }
+    if (action.type === "TITLE_TOUCH") {
+      return {
+        ...state,
+        title: {
+          ...state.title,
+          isValid: !(action.val && state.title.value === ""),
+          touched: action.val,
+        },
+      };
+    }
+    if (action.type === "DETAILS_TOUCH") {
+      return {
+        ...state,
+        details: {
+          ...state.details,
+          isValid: !(action.val && state.details.value === ""),
+          touched: action.val,
+        },
+      };
+    }
+    if (action.type === "CATEGORY_SELECT") {
+      return { ...state, category: action.val };
+    }
+    if (action.type === "STATUS_SELECT") {
+      return { ...state, status: action.val };
+    }
+    return {
+      title: {
+        value: edit ? feedback.title : "",
+        isValid: false,
+        touched: false,
+      },
+      details: {
+        value: edit ? feedback.title : "",
+        isValid: false,
+        touched: false,
+      },
+      category: categories[0].label,
+      status: statuses[0].label,
+    };
   };
 
-  const handleDetail = (event) => {
-    dispatchDetail({ type: "USER_INPUT", val: event.target.value.trim() });
+  const [formState, dispatchForm] = useReducer(formReducer, {
+    title: {
+      value: edit ? feedback.title : "",
+      isValid: false,
+      touched: false,
+    },
+    details: {
+      value: edit ? feedback.title : "",
+      isValid: false,
+      touched: false,
+    },
+    category: categories[0].label,
+    status: statuses[0].label,
+  });
+
+  const handleTitle = (event) => {
+    dispatchForm({ type: "TITLE_INPUT", val: event.target.value.trim() });
+  };
+
+  const handleTitleBlur = (event) => {
+    dispatchForm({ type: "TITLE_TOUCH", val: true });
+    console.log(formState.title);
+  };
+
+  const handleDetails = (event) => {
+    dispatchForm({ type: "DETAILS_INPUT", val: event.target.value.trim() });
+  };
+
+  const handleDetailsBlur = (event) => {
+    dispatchForm({ type: "DETAILS_TOUCH", val: true });
+    console.log(formState.details);
   };
 
   const handleCategory = (category) => {
-    setCategory(() => category);
+    dispatchForm({ type: "CATEGORY_SELECT", val: category });
   };
 
   const handleStatus = (status) => {
-    setStatus(() => status);
+    dispatchForm({ type: "STATUS_SELECT", val: status });
   };
 
-  let modalTitle = edit
-    ? `Editing ‘${titleState.value}’`
-    : "Create New Feedback";
   let icon = edit ? pen_icon : plus_icon;
+  let modalTitle = edit ? `Editing ‘${feedback.title}’` : "Create New Feedback";
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    if (titleState.value) dispatchTitle({ type: "INPUT_NO_EMTPY", val: false });
-    else dispatchTitle({ type: "INPUT_NO_EMTPY", val: true });
-    if (detailState.value)
-      dispatchDetail({ type: "INPUT_NO_EMTPY", val: false });
-    else dispatchDetail({ type: "INPUT_NO_EMTPY", val: true });
+    if (formState.title.value)
+      dispatchForm({ type: "TITLE_VALID", val: false });
+    else dispatchForm({ type: "TITLE_VALID", val: true });
+    if (formState.details.value)
+      dispatchForm({ type: "DETAILS_VALID", val: false });
+    else dispatchForm({ type: "DETAILS_VALID", val: true });
     //Ask Abdulla why does not it work without timer
-    if (titleState.value && detailState.value) {
+    if (formState.title.value && formState.details.value) {
       handler(() => {
         return event.target.innerText === "Delete"
           ? [
@@ -118,10 +181,10 @@ const CreateEditFeedback = ({ edit, suggestions, handler }) => {
               ...suggestions.filter((suggestion) => suggestion.id !== id),
               {
                 id: id,
-                title: titleState.value,
-                details: detailState.value,
-                tag: category,
-                status: status,
+                title: formState.title.value,
+                details: formState.details.value,
+                tag: formState.category,
+                status: formState.status,
                 upvotedByMe: feedback.upvotedByMe || false,
                 upvotes: feedback.upvotes || 0,
                 comments: feedback.comments || { quantity: 0, commentList: [] },
@@ -130,7 +193,7 @@ const CreateEditFeedback = ({ edit, suggestions, handler }) => {
       });
       setTimeout(() => {
         navigate("/");
-      }, 500);
+      }, 200);
     }
   };
 
@@ -160,11 +223,16 @@ const CreateEditFeedback = ({ edit, suggestions, handler }) => {
               description="Add a short, descriptive headline"
             >
               <Input
-                onChange={handleTitle}
-                name="title"
                 id="title"
-                error={titleState.isEmpty ? true : false}
-                defaultValue={titleState.value}
+                name="title"
+                onBlur={handleTitleBlur}
+                onChange={handleTitle}
+                error={
+                  !formState.title.isValid && formState.title.touched
+                    ? true
+                    : false
+                }
+                defaultValue={formState.title.value}
               />
             </InputRow>
             <InputRow
@@ -203,9 +271,14 @@ const CreateEditFeedback = ({ edit, suggestions, handler }) => {
                   name="detail"
                   id="detail"
                   as="textarea"
-                  onChange={handleDetail}
-                  error={detailState.isEmpty ? true : false}
-                  defaultValue={detailState.value}
+                  onBlur={handleDetailsBlur}
+                  onChange={handleDetails}
+                  error={
+                    !formState.details.isValid && formState.details.touched
+                      ? true
+                      : false
+                  }
+                  defaultValue={formState.details.value}
                 />
               </TextareaWrapper>
             </InputRow>

@@ -15,6 +15,7 @@ function Input(props) {
   return (
     <>
       <StyledInput
+        onBlur={props.onBlur}
         onChange={props.onChange}
         as={props.as}
         active={props.active}
