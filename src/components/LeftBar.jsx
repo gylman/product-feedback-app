@@ -7,7 +7,6 @@ import TagsSection from "./TagsSection";
 import ReactDOM from "react-dom";
 
 const LeftBar = ({ suggestions, handler }) => {
-  console.log(document);
   const [displayRightPanel, setDisplayRightPanel] = useState(false);
   const handleHamburger = () => {
     setDisplayRightPanel((prevState) => !prevState);
