@@ -7,7 +7,7 @@ import {
   Dot,
   Quantity,
 } from "./RoadmapMiniStyles";
-import StyledLink from "./UI/StyledLink";
+import StyledLink from "./UI/styles/StyledLink";
 
 const RoadmapMini = ({ suggestions }) => {
   const statusesAmount = [

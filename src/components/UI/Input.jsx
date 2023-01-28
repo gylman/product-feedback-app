@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import StyledInput from "./StyledInput";
+import StyledInput from "./styles/StyledInput";
 
 const StyledSpan = styled.span`
   display: inline-block;

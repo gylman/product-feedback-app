@@ -1,7 +1,7 @@
 import cuid from "cuid";
 import Divider from "./Divider";
 import Option from "./Option";
-import { StyledContainer } from "./StyledOptionsContainer";
+import { StyledContainer } from "./styles/StyledOptionsContainer";
 
 const OptionsContainer = (props) => (
   <StyledContainer top={props.top} w={props.w}>

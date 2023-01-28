@@ -1,5 +1,5 @@
-import StyledPinButton from "./StyledPinButton";
-import StyledButton from "./StyledButton";
+import StyledPinButton from "./styles/StyledPinButton";
+import StyledButton from "./styles/StyledButton";
 
 function Button(props) {
   return props.kind === "default" ||

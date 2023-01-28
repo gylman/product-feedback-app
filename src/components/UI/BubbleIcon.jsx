@@ -1,5 +1,5 @@
 import React from "react";
-import StyledBubble from "./StyledBubble";
+import StyledBubble from "./styles/StyledBubble";
 
 const BubbleIcon = () => (
   <StyledBubble>

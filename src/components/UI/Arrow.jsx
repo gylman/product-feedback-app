@@ -1,5 +1,5 @@
 import React from "react";
-import StyledArrow from "./StyledArrow";
+import StyledArrow from "./styles/StyledArrow";
 
 const Arrow = (props) => (
   <StyledArrow
@@ -13,20 +13,3 @@ const Arrow = (props) => (
 );
 
 export default Arrow;
-/* 
-
-.icon {
-  width: 48px;
-  height: 48px;
-  display: inline-block;
-  
-  -webkit-mask: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/18515/heart.svg) no-repeat 50% 50%;
-  mask: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/18515/heart.svg) no-repeat 50% 50%;
-  -webkit-mask-size: cover;
-  mask-size: cover;
-}
-
-.icon-red { background-color: red; }
-.icon-orange { background-color: orange; }
-.icon-yellow { background-color: yellow; }
- */

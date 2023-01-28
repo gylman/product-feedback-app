@@ -1,7 +1,7 @@
 import React, { useRef, useState } from "react";
 import classes from "./styles/AddComment.module.css";
 import styled from "styled-components";
-import StyledInput from "./UI/StyledInput";
+import StyledInput from "./UI/styles/StyledInput";
 import Button from "./UI/Button";
 import Container from "./Container";
 import { currentBrowser } from "../model";

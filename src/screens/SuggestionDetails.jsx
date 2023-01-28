@@ -7,7 +7,7 @@ import Container from "../components/Container";
 import { useParams } from "react-router-dom";
 import Arrow from "../components/UI/Arrow";
 import Button from "../components/UI/Button";
-import StyledLink from "../components/UI/StyledLink";
+import StyledLink from "../components/UI/styles/StyledLink";
 const SuggestionDetails = (props) => {
   let params = useParams();
 

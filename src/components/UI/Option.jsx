@@ -1,4 +1,4 @@
-import { StyledOption } from "./StyledOption";
+import { StyledOption } from "./styles/StyledOption";
 import Tick from "./Tick";
 
 const Option = (props) => {

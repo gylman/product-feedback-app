@@ -3,7 +3,7 @@ import React from "react";
 import classes from "./styles/Suggestions.module.css";
 import Container from "../components/Container";
 import SuggestionCard from "../components/SuggestionCard";
-import StyledLink from "../components/UI/StyledLink";
+import StyledLink from "../components/UI/styles/StyledLink";
 
 const Suggestions = ({ suggestions, handler }) => {
   return (

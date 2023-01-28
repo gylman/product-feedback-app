@@ -17,4 +17,3 @@ const StyledArrow = styled.svg`
 `;
 
 export default StyledArrow;
-// stroke: ${(props) => props.paint};

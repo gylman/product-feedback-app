@@ -1,12 +1,4 @@
-import styled from "styled-components";
-
-const StyledTick = styled.svg.attrs({
-  viewBox: "0 0 13 11",
-  fill: "none",
-})`
-  width: 13px;
-  height: 11px;
-`;
+import { StyledTick } from "./styles/StyledTick";
 
 const Tick = () => (
   <StyledTick>

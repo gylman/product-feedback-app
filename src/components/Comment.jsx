@@ -9,7 +9,7 @@ import {
 } from "./CommentStyles.js";
 import Container from "./Container.jsx";
 import Button from "./UI/Button";
-import StyledInput from "./UI/StyledInput";
+import StyledInput from "./UI/styles/StyledInput";
 
 const Comment = ({ comment, handler }) => {
   const [isReplying, setIsReplying] = useState(false);
