@@ -4,8 +4,10 @@ import BoardTitle from "./BoardTitle";
 import Container from "./Container";
 import RoadmapMini from "./RoadmapMini";
 import TagsSection from "./TagsSection";
+import ReactDOM from "react-dom";
 
 const LeftBar = ({ suggestions, handler }) => {
+  console.log(document);
   const [displayRightPanel, setDisplayRightPanel] = useState(false);
   const handleHamburger = () => {
     setDisplayRightPanel((prevState) => !prevState);
@@ -25,11 +27,20 @@ const LeftBar = ({ suggestions, handler }) => {
       ) : (
         displayRightPanel && (
           <>
-            <Container onClick={handleHamburger} className={classes.level_1} />
-            <Container className={classes.level_2}>
-              <TagsSection suggestions={suggestions} handler={handler} />
-              <RoadmapMini suggestions={suggestions} />
-            </Container>
+            {ReactDOM.createPortal(
+              <Container
+                onClick={handleHamburger}
+                className={classes.level_1}
+              />,
+              document.getElementById("backdrop-root")
+            )}
+            {ReactDOM.createPortal(
+              <Container className={classes.level_2}>
+                <TagsSection suggestions={suggestions} handler={handler} />
+                <RoadmapMini suggestions={suggestions} />
+              </Container>,
+              document.getElementById("panel-root")
+            )}
           </>
         )
       )}
