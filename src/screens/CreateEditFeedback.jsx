@@ -100,32 +100,19 @@ const CreateEditFeedback = ({ edit, suggestions, handler }) => {
     if (action.type === "STATUS_SELECT") {
       return { ...state, status: action.val };
     }
-    return {
-      title: {
-        value: edit ? feedback.title : "",
-        isValid: false,
-        touched: false,
-      },
-      details: {
-        value: edit ? feedback.title : "",
-        isValid: false,
-        touched: false,
-      },
-      category: categories[0].label,
-      status: statuses[0].label,
-    };
+    return { ...state };
   };
 
   const [formState, dispatchForm] = useReducer(formReducer, {
     title: {
       value: edit ? feedback.title : "",
-      isValid: false,
-      touched: false,
+      isValid: edit ? true : false,
+      touched: edit ? true : false,
     },
     details: {
       value: edit ? feedback.title : "",
-      isValid: false,
-      touched: false,
+      isValid: edit ? true : false,
+      touched: edit ? true : false,
     },
     category: categories[0].label,
     status: statuses[0].label,
@@ -162,14 +149,10 @@ const CreateEditFeedback = ({ edit, suggestions, handler }) => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    if (formState.title.value)
-      dispatchForm({ type: "TITLE_VALID", val: false });
-    else dispatchForm({ type: "TITLE_VALID", val: true });
-    if (formState.details.value)
-      dispatchForm({ type: "DETAILS_VALID", val: false });
-    else dispatchForm({ type: "DETAILS_VALID", val: true });
+    dispatchForm({ type: "TITLE_TOUCH", val: true });
+    dispatchForm({ type: "DETAILS_TOUCH", val: true });
     //Ask Abdulla why does not it work without timer
-    if (formState.title.value && formState.details.value) {
+    if (formState.title.isValid && formState.details.isValid) {
       handler(() => {
         return event.target.innerText === "Delete"
           ? [
