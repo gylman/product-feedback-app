@@ -34,7 +34,8 @@ const statuses = [
   { label: "Live" },
 ];
 
-const CreateEditFeedback = ({ modalType, suggestions, handler }) => {
+const CreateEditFeedback = ({ edit, suggestions, handler }) => {
+  console.log(edit);
   const navigate = useNavigate();
   const params = useParams();
   const feedback = params.id
@@ -42,15 +43,11 @@ const CreateEditFeedback = ({ modalType, suggestions, handler }) => {
     : {};
   const [isTitleEmpty, setIsTitleEmpty] = useState(false);
   const [isDetailEmpty, setIsDetailEmpty] = useState(false);
-  const [title, setTitle] = useState(
-    modalType === "edit" ? feedback.title : ""
-  );
-  const [detail, setDetail] = useState(
-    modalType === "edit" ? feedback.details : ""
-  );
+  const [title, setTitle] = useState(edit ? feedback.title : "");
+  const [detail, setDetail] = useState(edit ? feedback.details : "");
   const [category, setCategory] = useState(categories[0]);
   const [status, setStatus] = useState(statuses[0].label);
-  const id = modalType === "edit" ? feedback.id : cuid();
+  const id = edit ? feedback.id : cuid();
   //const [formData, setFormData] = useState({});
 
   const handleSubmit = (event) => {
@@ -106,16 +103,8 @@ const CreateEditFeedback = ({ modalType, suggestions, handler }) => {
     setDetail(() => event.target.value.trim());
   };
 
-  let icon;
-  let modalTitle;
-
-  if (modalType === "edit") {
-    modalTitle = `Editing ‘${title}’`;
-    icon = pen_icon;
-  } else {
-    modalTitle = "Create New Feedback";
-    icon = plus_icon;
-  }
+  let modalTitle = edit ? `Editing ‘${title}’` : "Create New Feedback";
+  let icon = edit ? pen_icon : plus_icon;
 
   return (
     <Container className={classes.level_0}>
@@ -132,7 +121,7 @@ const CreateEditFeedback = ({ modalType, suggestions, handler }) => {
             Go back
           </Button>
         </Container>
-        <Wrapper modalType={modalType}>
+        <Wrapper edit={edit}>
           <Icon>
             <img src={icon} alt={`${icon}`} />
           </Icon>
@@ -161,7 +150,7 @@ const CreateEditFeedback = ({ modalType, suggestions, handler }) => {
                 <Arrow direction="down" paint="#4661E6" />
               </SelectBox>
             </InputRow>
-            {modalType === "edit" && (
+            {edit && (
               <InputRow
                 title="Update Status"
                 description="Change feedback state"
@@ -192,7 +181,7 @@ const CreateEditFeedback = ({ modalType, suggestions, handler }) => {
             </InputRow>
           </Container>
           <Container className={classes.level_3}>
-            {modalType === "edit" && (
+            {edit && (
               <ButtonWrapper>
                 <Button
                   className={classes.level_4}
@@ -226,7 +215,7 @@ const CreateEditFeedback = ({ modalType, suggestions, handler }) => {
                 type="button"
                 onClick={handleSubmit}
               >
-                {modalType === "edit" ? "Save Changes" : "Add Feedback"}
+                {edit ? "Save Changes" : "Add Feedback"}
               </Button>
             </Container>
           </Container>

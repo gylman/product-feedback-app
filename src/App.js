@@ -38,8 +38,8 @@ function App() {
         element={
           <CreateEditFeedback
             suggestions={suggestions}
-            modalType="edit"
             handler={handleSetSuggestions}
+            edit
           />
         }
       />
