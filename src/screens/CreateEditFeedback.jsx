@@ -133,7 +133,6 @@ const CreateEditFeedback = ({ edit, suggestions, handler }) => {
 
   const handleDetailsBlur = (event) => {
     dispatchForm({ type: "DETAILS_TOUCH", val: true });
-    console.log(formState.details);
   };
 
   const handleCategory = (category) => {
@@ -161,7 +160,6 @@ const CreateEditFeedback = ({ edit, suggestions, handler }) => {
               ),
             ]
           : [
-              ...suggestions.filter((suggestion) => suggestion.id !== id),
               {
                 id: id,
                 title: formState.title.value,
@@ -172,6 +170,7 @@ const CreateEditFeedback = ({ edit, suggestions, handler }) => {
                 upvotes: feedback.upvotes || 0,
                 comments: feedback.comments || { quantity: 0, commentList: [] },
               },
+              ...suggestions.filter((suggestion) => suggestion.id !== id),
             ];
       });
       setTimeout(() => {
