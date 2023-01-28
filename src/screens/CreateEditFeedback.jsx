@@ -35,7 +35,6 @@ const statuses = [
 ];
 
 const CreateEditFeedback = ({ edit, suggestions, handler }) => {
-  console.log(edit);
   const navigate = useNavigate();
   const params = useParams();
   const feedback = params.id
@@ -90,17 +89,17 @@ const CreateEditFeedback = ({ edit, suggestions, handler }) => {
     setTitle(() => event.target.value.trim());
   };
 
+  const handleInputDetail = (event) => {
+    setIsDetailEmpty(() => event.target.value.length !== 0 && false);
+    setDetail(() => event.target.value.trim());
+  };
+
   const handleCategory = (category) => {
     setCategory(() => category);
   };
 
   const handleStatus = (status) => {
     setStatus(() => status);
-  };
-
-  const handleInputDetail = (event) => {
-    setIsDetailEmpty(() => event.target.value.length !== 0 && false);
-    setDetail(() => event.target.value.trim());
   };
 
   let modalTitle = edit ? `Editing ‘${title}’` : "Create New Feedback";
