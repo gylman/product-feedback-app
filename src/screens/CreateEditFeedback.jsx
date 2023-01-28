@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useReducer } from "react";
 import classes from "./styles/CreateEditFeedback.module.css";
 import { useParams } from "react-router-dom";
 import { useState } from "react";
@@ -34,29 +34,55 @@ const statuses = [
   { label: "Live" },
 ];
 
+const titleReducer = (state, action) => {
+  if (action.type === "USER_INPUT") {
+    return { value: action.val, isEmpty: action.val.length === 0 };
+  }
+  if (action.type === "INPUT_NO_EMPTY") {
+    return { value: state.val, isEmpty: action.val };
+  }
+  return { value: "", isEmpty: false };
+};
+
+const detailReducer = (state, action) => {
+  if (action.type === "USER_INPUT") {
+    return { value: action.val, isEmpty: action.val.length === 0 };
+  }
+  if (action.type === "INPUT_NO_EMPTY") {
+    return { value: state.val, isEmpty: action.val };
+  }
+
+  return { value: "", isEmpty: false };
+};
+
 const CreateEditFeedback = ({ edit, suggestions, handler }) => {
   const navigate = useNavigate();
   const params = useParams();
   const feedback = params.id
     ? { ...suggestions.find((suggestion) => suggestion.id === params.id) }
     : {};
-  const [isTitleEmpty, setIsTitleEmpty] = useState(false);
-  const [isDetailEmpty, setIsDetailEmpty] = useState(false);
-  const [title, setTitle] = useState(edit ? feedback.title : "");
-  const [detail, setDetail] = useState(edit ? feedback.details : "");
-  const [category, setCategory] = useState(categories[0]);
+
+  const [titleState, dispatchTitle] = useReducer(titleReducer, {
+    value: edit ? feedback.title : "",
+    isEmpty: false,
+  });
+
+  const [detailState, dispatchDetail] = useReducer(detailReducer, {
+    value: edit ? feedback.details : "",
+    isEmpty: false,
+  });
+
+  const [category, setCategory] = useState(categories[0].label);
   const [status, setStatus] = useState(statuses[0].label);
   const id = edit ? feedback.id : cuid();
   //const [formData, setFormData] = useState({});
 
-  const handleInputTitle = (event) => {
-    setIsTitleEmpty(() => event.target.value.length !== 0 && false);
-    setTitle(() => event.target.value.trim());
+  const handleTitle = (event) => {
+    dispatchTitle({ type: "USER_INPUT", val: event.target.value.trim() });
   };
 
-  const handleInputDetail = (event) => {
-    setIsDetailEmpty(() => event.target.value.length !== 0 && false);
-    setDetail(() => event.target.value.trim());
+  const handleDetail = (event) => {
+    dispatchDetail({ type: "USER_INPUT", val: event.target.value.trim() });
   };
 
   const handleCategory = (category) => {
@@ -67,17 +93,20 @@ const CreateEditFeedback = ({ edit, suggestions, handler }) => {
     setStatus(() => status);
   };
 
-  let modalTitle = edit ? `Editing ‘${title}’` : "Create New Feedback";
+  let modalTitle = edit
+    ? `Editing ‘${titleState.value}’`
+    : "Create New Feedback";
   let icon = edit ? pen_icon : plus_icon;
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    if (title) setIsTitleEmpty(false);
-    else setIsTitleEmpty(true);
-    if (detail) setIsDetailEmpty(false);
-    else setIsDetailEmpty(true);
+    if (titleState.value) dispatchTitle({ type: "INPUT_NO_EMTPY", val: false });
+    else dispatchTitle({ type: "INPUT_NO_EMTPY", val: true });
+    if (detailState.value)
+      dispatchDetail({ type: "INPUT_NO_EMTPY", val: false });
+    else dispatchDetail({ type: "INPUT_NO_EMTPY", val: true });
     //Ask Abdulla why does not it work without timer
-    if (title && detail) {
+    if (titleState.value && detailState.value) {
       handler(() => {
         return event.target.innerText === "Delete"
           ? [
@@ -89,8 +118,8 @@ const CreateEditFeedback = ({ edit, suggestions, handler }) => {
               ...suggestions.filter((suggestion) => suggestion.id !== id),
               {
                 id: id,
-                title: title,
-                details: detail,
+                title: titleState.value,
+                details: detailState.value,
                 tag: category,
                 status: status,
                 upvotedByMe: feedback.upvotedByMe || false,
@@ -131,10 +160,11 @@ const CreateEditFeedback = ({ edit, suggestions, handler }) => {
               description="Add a short, descriptive headline"
             >
               <Input
-                onChange={handleInputTitle}
+                onChange={handleTitle}
                 name="title"
-                error={isTitleEmpty ? true : false}
-                defaultValue={title}
+                id="title"
+                error={titleState.isEmpty ? true : false}
+                defaultValue={titleState.value}
               />
             </InputRow>
             <InputRow
@@ -171,10 +201,11 @@ const CreateEditFeedback = ({ edit, suggestions, handler }) => {
               <TextareaWrapper>
                 <Input
                   name="detail"
+                  id="detail"
                   as="textarea"
-                  onChange={handleInputDetail}
-                  error={isDetailEmpty ? true : false}
-                  defaultValue={detail}
+                  onChange={handleDetail}
+                  error={detailState.isEmpty ? true : false}
+                  defaultValue={detailState.value}
                 />
               </TextareaWrapper>
             </InputRow>
