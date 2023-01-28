@@ -2,7 +2,6 @@ import React from "react";
 import classes from "./styles/CreateEditFeedback.module.css";
 import { useParams } from "react-router-dom";
 import { useState } from "react";
-import styled from "styled-components";
 import plus_icon from "../assets/icons/modal_plus_icon.svg";
 import pen_icon from "../assets/icons/modal_pen_icon.svg";
 import InputRow from "../components/InputRow";
@@ -13,45 +12,13 @@ import SelectBox from "../components/UI/SelectBox";
 import Container from "../components//Container";
 import { useNavigate } from "react-router";
 import cuid from "cuid";
-
-const Wrapper = styled.form`
-  max-width: 540px;
-  max-height: ${(props) => (props.modalType === "edit" ? "820px" : "657px")};
-  padding: 52px 42px 40px 42px;
-  background-color: #ffffff;
-  position: relative;
-  border-radius: 10px;
-  @media (max-width: 600px) {
-    padding: 44px 24px 24px 24px;
-    max-height: none;
-  }
-`;
-
-const Icon = styled.div`
-  position: absolute;
-  top: -28px;
-  left: 42px;
-  @media (max-width: 600px) {
-    transform: scale(0.715);
-  }
-`;
-
-const ModalTitle = styled.h2`
-  color: #3a4374;
-  margin-bottom: 40px;
-  @media (max-width: 600px) {
-    ${(props) => props.theme.typography.size18};
-  }
-`;
-
-const TextareaWrapper = styled.div`
-  height: 96px;
-`;
-
-const ButtonWrapper = styled.div`
-  margin-right: "auto";
-  width: 100%;
-`;
+import {
+  ButtonWrapper,
+  Icon,
+  ModalTitle,
+  TextareaWrapper,
+  Wrapper,
+} from "./styles/CreateEditFeedbackStyles";
 
 const categories = [
   { label: "Feature" },
