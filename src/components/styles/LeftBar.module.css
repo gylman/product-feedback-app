@@ -51,5 +51,7 @@
 
   .level_1 {
     margin-left: -24px;
+    background-color: black;
+    opacity: 50%;
   }
 }
