@@ -13,41 +13,19 @@ import { ButtonTitle, PageTitle } from "../components/StyledRoadmap";
 const Roadmap = ({ suggestions, handler }) => {
   const navigate = useNavigate();
   const grid = [[], [], []];
+  const statusIndex = { "Planned": 0, "In-Progress": 1, "Live": 2 };
 
   suggestions.forEach((suggestion) => {
-    (suggestion.status === "Planned" &&
-      grid[0].push(
-        <RoadmapCard
-          navigate={() => {
-            navigate(`/suggestions/${suggestion.id}`);
-          }}
-          key={cuid()}
-          suggestion={suggestion}
-          handler={handler}
-        />
-      )) ||
-      (suggestion.status === "In-Progress" &&
-        grid[1].push(
-          <RoadmapCard
-            navigate={() => {
-              navigate(`/suggestions/${suggestion.id}`);
-            }}
-            key={cuid()}
-            suggestion={suggestion}
-            handler={handler}
-          />
-        )) ||
-      (suggestion.status === "Live" &&
-        grid[2].push(
-          <RoadmapCard
-            key={cuid()}
-            navigate={() => {
-              navigate(`/suggestions/${suggestion.id}`);
-            }}
-            suggestion={suggestion}
-            handler={handler}
-          />
-        ));
+    grid[statusIndex[suggestion.status]].push(
+      <RoadmapCard
+        navigate={() => {
+          navigate(`/suggestions/${suggestion.id}`);
+        }}
+        key={cuid()}
+        suggestion={suggestion}
+        handler={handler}
+      />
+    );
   });
   return (
     <Container className={classes.level_0}>

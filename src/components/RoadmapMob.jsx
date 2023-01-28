@@ -1,8 +1,7 @@
 import React, { useState } from "react";
 import Container from "./Container";
-import { Description } from "./StyledRoadmap";
+import { Description, Title } from "./StyledRoadmap";
 import classes from "../screens/styles/Roadmap.module.css";
-import { Title } from "./SuggestionCardStyles";
 
 const RoadmapMob = ({ grid }) => {
   const [activeTab, setActiveTab] = useState("Planned");
