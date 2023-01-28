@@ -49,6 +49,27 @@ const CreateEditFeedback = ({ edit, suggestions, handler }) => {
   const id = edit ? feedback.id : cuid();
   //const [formData, setFormData] = useState({});
 
+  const handleInputTitle = (event) => {
+    setIsTitleEmpty(() => event.target.value.length !== 0 && false);
+    setTitle(() => event.target.value.trim());
+  };
+
+  const handleInputDetail = (event) => {
+    setIsDetailEmpty(() => event.target.value.length !== 0 && false);
+    setDetail(() => event.target.value.trim());
+  };
+
+  const handleCategory = (category) => {
+    setCategory(() => category);
+  };
+
+  const handleStatus = (status) => {
+    setStatus(() => status);
+  };
+
+  let modalTitle = edit ? `Editing ‘${title}’` : "Create New Feedback";
+  let icon = edit ? pen_icon : plus_icon;
+
   const handleSubmit = (event) => {
     event.preventDefault();
     if (title) setIsTitleEmpty(false);
@@ -83,27 +104,6 @@ const CreateEditFeedback = ({ edit, suggestions, handler }) => {
       }, 500);
     }
   };
-
-  const handleInputTitle = (event) => {
-    setIsTitleEmpty(() => event.target.value.length !== 0 && false);
-    setTitle(() => event.target.value.trim());
-  };
-
-  const handleInputDetail = (event) => {
-    setIsDetailEmpty(() => event.target.value.length !== 0 && false);
-    setDetail(() => event.target.value.trim());
-  };
-
-  const handleCategory = (category) => {
-    setCategory(() => category);
-  };
-
-  const handleStatus = (status) => {
-    setStatus(() => status);
-  };
-
-  let modalTitle = edit ? `Editing ‘${title}’` : "Create New Feedback";
-  let icon = edit ? pen_icon : plus_icon;
 
   return (
     <Container className={classes.level_0}>
