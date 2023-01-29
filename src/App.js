@@ -5,6 +5,7 @@ import { suggestionList } from "./model";
 import { Route, Routes } from "react-router-dom";
 import { useCallback, useState } from "react";
 import IndexScreen from "./screens/IndexScreen";
+import GlobalContext from "./store/global-context";
 
 function App() {
   const [suggestions, setSuggestions] = useState(suggestionList);
@@ -14,51 +15,53 @@ function App() {
   }, []);
 
   return (
-    <Routes>
-      <Route
-        path="/"
-        element={
-          <IndexScreen
-            suggestions={suggestions}
-            handler={handleSetSuggestions}
-          />
-        }
-      />
-      <Route
-        path="/suggestions/:id"
-        element={
-          <SuggestionDetails
-            suggestions={suggestions}
-            handler={handleSetSuggestions}
-          />
-        }
-      />
-      <Route
-        path="/suggestions/:id/edit-feedback"
-        element={
-          <CreateEditFeedback
-            suggestions={suggestions}
-            handler={handleSetSuggestions}
-            edit
-          />
-        }
-      />
-      <Route
-        path="/roadmap"
-        element={
-          <Roadmap suggestions={suggestions} handler={handleSetSuggestions} />
-        }
-      />
-      <Route
-        path="/create-feedback"
-        element={
-          <CreateEditFeedback
-            suggestions={suggestions}
-            handler={handleSetSuggestions}
-          />
-        }
-      />
-    </Routes>
+    <GlobalContext.Provider
+      value={{
+        suggestions: suggestions,
+        handler: handleSetSuggestions,
+      }}
+    >
+      <Routes>
+        <Route
+          path="/"
+          element={
+            <IndexScreen
+              suggestions={suggestions}
+              handler={handleSetSuggestions}
+            />
+          }
+        />
+        <Route
+          path="/suggestions/:id"
+          element={<SuggestionDetails suggestions={suggestions} />}
+        />
+        <Route
+          path="/suggestions/:id/edit-feedback"
+          element={
+            <CreateEditFeedback
+              suggestions={suggestions}
+              handler={handleSetSuggestions}
+              edit
+            />
+          }
+        />
+        <Route
+          path="/roadmap"
+          element={
+            <Roadmap suggestions={suggestions} handler={handleSetSuggestions} />
+          }
+        />
+        <Route
+          path="/create-feedback"
+          element={
+            <CreateEditFeedback
+              suggestions={suggestions}
+              handler={handleSetSuggestions}
+            />
+          }
+        />
+      </Routes>
+    </GlobalContext.Provider>
   );
 }
 

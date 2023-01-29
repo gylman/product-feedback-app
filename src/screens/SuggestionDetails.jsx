@@ -8,6 +8,7 @@ import { useParams } from "react-router-dom";
 import Arrow from "../components/UI/Arrow";
 import Button from "../components/UI/Button";
 import StyledLink from "../components/UI/styles/StyledLink";
+import GlobalContext from "../store/global-context";
 const SuggestionDetails = (props) => {
   let params = useParams();
 
@@ -35,9 +36,15 @@ const SuggestionDetails = (props) => {
             </StyledLink>
           </Container>
         </Container>
-        <SuggestionCard suggestion={suggestion} handler={props.handler} />
-        <CommentsSection suggestion={suggestion} handler={props.handler} />
-        <AddComment suggestion={suggestion} handler={props.handler} />
+        <GlobalContext.Consumer>
+          {(ctx) => (
+            <>
+              <SuggestionCard suggestion={suggestion} handler={ctx.handler} />
+              <CommentsSection suggestion={suggestion} handler={ctx.handler} />
+              <AddComment suggestion={suggestion} handler={ctx.handler} />
+            </>
+          )}
+        </GlobalContext.Consumer>
       </Container>
     </Container>
   );
