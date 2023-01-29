@@ -9,33 +9,8 @@ import {
 import horizontal_line from "../assets/images/horizontal_line.svg";
 import Comment from "./Comment.jsx";
 import Container from "./Container";
-import { currentBrowser } from "../model";
 
-const CommentsSection = ({ suggestion, handler }) => {
-  const handleCommentReply = (comment, replyTo) => {
-    const tempData = { ...suggestion.comments };
-    if (replyTo === undefined)
-      tempData.commentList.push({
-        ...currentBrowser,
-        content: comment,
-      });
-    else
-      tempData.commentList
-        .find(
-          (comment) =>
-            comment.commentId === replyTo.commentId ||
-            comment.commentId === replyTo.parentId
-        )
-        .children.push({
-          ...currentBrowser,
-          parentId: replyTo.parentId ?? replyTo.commentId,
-          content: comment,
-        });
-    ++tempData.quantity;
-
-    return { ...suggestion, comments: { ...tempData } };
-  };
-
+const CommentsSection = ({ suggestion, handler, handleCommentReply }) => {
   const handleComments = (comment, replyTo) => {
     handler((prevState) => [
       ...prevState.map((prevSuggestion) =>

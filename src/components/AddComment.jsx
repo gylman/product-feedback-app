@@ -1,53 +1,14 @@
 import React, { useRef, useState } from "react";
 import classes from "./styles/AddComment.module.css";
-import styled from "styled-components";
 import StyledInput from "./UI/styles/StyledInput";
+import { TopMostContainer, Header, CharLeft } from "./styles/AddCommentStyles";
 import Button from "./UI/Button";
 import Container from "./Container";
-import { currentBrowser } from "../model";
 
-const TopMostContainer = styled.div`
-  padding: 24px 32px 32px 34px;
-  background-color: #ffffff;
-  border-radius: ${(props) => props.theme["border-radius"]};
-`;
-
-const Header = styled.h3`
-  color: #3a4374;
-  margin-bottom: 24px;
-`;
-
-const CharLeft = styled.span`
-  color: #647196;
-  ${(props) => props.theme.typography.size15}
-  @media(max-width: 600px) {
-    ${(props) => props.theme.typography.size13regular}
-  }
-`;
-
-const AddComment = ({ suggestion, handler }) => {
+const AddComment = ({ suggestion, handler, handleCommentReply }) => {
   const [quantity, setQuantity] = useState(250);
   const [comment, setComment] = useState("");
   const inputData = useRef();
-
-  const handleCommentReply = (comment, replyTo) => {
-    const tempData = { ...suggestion.comments };
-    if (replyTo === undefined)
-      tempData.commentList.push({ ...currentBrowser, content: comment });
-    else
-      tempData.commentList
-        .find(
-          (comment) =>
-            comment.commentId === replyTo.commentId ||
-            comment.commentId === replyTo.parentId
-        )
-        .children.push({
-          ...currentBrowser,
-          parentId: replyTo.parentId ?? replyTo.commentId,
-        });
-    tempData.quantity++;
-    return { ...suggestion, comments: tempData };
-  };
 
   const handleComment = () => {
     setQuantity(() => 250 - inputData.current.value.length);

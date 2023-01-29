@@ -9,6 +9,7 @@ import Arrow from "../components/UI/Arrow";
 import Button from "../components/UI/Button";
 import StyledLink from "../components/UI/styles/StyledLink";
 import GlobalContext from "../store/global-context";
+import { currentBrowser } from "../model";
 
 const SuggestionDetails = (props) => {
   let params = useParams();
@@ -17,6 +18,30 @@ const SuggestionDetails = (props) => {
     (suggestion) => suggestion.id === params.id
   );
   const ctx = useContext(GlobalContext);
+
+  const handleCommentReply = (comment, replyTo) => {
+    const tempData = { ...suggestion.comments };
+    if (replyTo === undefined)
+      tempData.commentList.push({
+        ...currentBrowser,
+        content: comment,
+      });
+    else
+      tempData.commentList
+        .find(
+          (comment) =>
+            comment.commentId === replyTo.commentId ||
+            comment.commentId === replyTo.parentId
+        )
+        .children.push({
+          ...currentBrowser,
+          parentId: replyTo.parentId ?? replyTo.commentId,
+          content: comment,
+        });
+    ++tempData.quantity;
+
+    return { ...suggestion, comments: { ...tempData } };
+  };
   return (
     <Container className={classes.level_0}>
       <Container className={classes.level_1}>
@@ -38,8 +63,16 @@ const SuggestionDetails = (props) => {
           </Container>
         </Container>
         <SuggestionCard suggestion={suggestion} handler={ctx.handler} />
-        <CommentsSection suggestion={suggestion} handler={ctx.handler} />
-        <AddComment suggestion={suggestion} handler={ctx.handler} />
+        <CommentsSection
+          suggestion={suggestion}
+          handler={ctx.handler}
+          handleCommentReply={handleCommentReply}
+        />
+        <AddComment
+          suggestion={suggestion}
+          handler={ctx.handler}
+          handleCommentReply={handleCommentReply}
+        />
       </Container>
     </Container>
   );
